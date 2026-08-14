@@ -1,0 +1,8 @@
+.DS_Store
+dist/
+*.dictionary
+*.zip
+*.mdx
+objects/
+ECDICT-styled.xml
+

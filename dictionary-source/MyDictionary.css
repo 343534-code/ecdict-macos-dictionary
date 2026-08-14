@@ -1,0 +1,59 @@
+@charset "UTF-8";
+body { font-family: -apple-system, "PingFang SC", sans-serif; line-height: 1.55; color: CanvasText; }
+h1 { margin: 0 0 5px; font-size: 1.45em; font-weight: 700; color: CanvasText; }
+.pronunciation { color: #ffffff !important; font-family: ui-monospace, Menlo, monospace; margin: 0 0 8px; font-size: 1em; font-weight: 600; opacity: 1; }
+.sense { margin: 5px 0; }
+.pos { display: inline-block; min-width: 2.1em; margin-right: 7px; color: #0a67c7; font-style: italic; font-weight: 650; }
+.meta { margin-top: 8px; padding-top: 6px; border-top: 1px solid -apple-system-separator; color: -apple-system-secondary-label; font-size: .9em; }
+
+/* The three-finger Lookup panel does not honor CanvasText consistently. */
+@media (prefers-color-scheme: dark) {
+  body, h1, .sense { color: #f5f5f7 !important; }
+  .pronunciation { color: #ffffff !important; }
+  .meta { color: #b8bbc2 !important; }
+  .meta { border-top-color: rgba(255, 255, 255, .22) !important; }
+  .pos { color: #2997ff !important; }
+}
+
+/* DictionaryService's quick-lookup renderer may not report its color scheme. */
+html.apple_client-panel h1,
+html.apple_client-panel .sense { color: #f5f5f7 !important; }
+/* Match the high-contrast hierarchy used by Apple's built-in dictionaries. */
+html.apple_client-panel .pronunciation { color: #ffffff !important; font-weight: 600 !important; opacity: 1 !important; }
+html.apple_client-panel .meta { color: #d9d9de !important; font-weight: 500 !important; opacity: 1 !important; }
+
+@media (prefers-color-scheme: light) {
+  body, h1, .sense { color: #1d1d1f !important; }
+  .pronunciation { color: #ffffff !important; }
+  .meta { color: #5f6368 !important; }
+  .meta { border-top-color: rgba(0, 0, 0, .15) !important; }
+}
+@namespace d url(http://www.apple.com/DTDs/DictionaryService-1.0.rng);
+
+d|entry {
+}
+
+h1	{
+	font-size: 150%;
+}
+
+h3	{
+	font-size: 100%;
+}
+
+span.column {
+	display: block;
+	border: solid 2px #c0c0c0;
+	margin-left: 2em;
+	margin-right: 2em;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	padding: 0.5em;
+}
+
+@media (prefers-color-scheme: dark)
+{
+	body {
+		color: white;
+	}
+}

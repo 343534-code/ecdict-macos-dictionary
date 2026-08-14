@@ -1,0 +1,9 @@
+ECDICT data and the upstream MDX are derived from:
+https://github.com/skywind3000/ECDICT
+
+Upstream release used: ECDICT 1.0.28 (2017-09-20)
+https://github.com/skywind3000/ECDICT/releases/tag/1.0.28
+
+This repository provides an unofficial macOS Dictionary conversion and
+formatting layer. It is not endorsed by Apple Inc. or the ECDICT maintainers.
+
