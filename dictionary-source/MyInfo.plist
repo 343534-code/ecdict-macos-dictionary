@@ -5,13 +5,13 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.ecdict.dictionary.concise-english-chinese.v100</string>
+	<string>com.ecdict.dictionary.concise-english-chinese.v101</string>
 	<key>CFBundleName</key>
 	<string>ECDICT 简明英汉字典</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.0</string>
+	<string>1.0.1</string>
 	<key>DCSDictionaryCopyright</key>
-	<string>ECDICT data: MIT / CC; formatted for personal use.</string>
+	<string>ECDICT 1.0.28 © 2017 Linwei, MIT License; macOS conversion distributed under the MIT License.</string>
 	<key>DCSDictionaryManufacturerName</key>
 	<string>ECDICT</string>
 	<key>DCSDictionaryFrontMatterReferenceID</key>

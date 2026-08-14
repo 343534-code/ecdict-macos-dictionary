@@ -1,15 +1,31 @@
 # ECDICT macOS Dictionary
 
-面向 macOS 系统词典的超大规模、完全离线英汉词典。本项目将 [skywind3000/ECDICT](https://github.com/skywind3000/ECDICT) 的“简明英汉字典增强版”转换为 Apple `Dictionary.app` 可直接使用的 `.dictionary` 格式，并为释义、音标、词性和标签提供清晰的结构化排版。
+[![Release](https://img.shields.io/github/v/release/343534-code/ecdict-macos-dictionary?label=release)](https://github.com/343534-code/ecdict-macos-dictionary/releases/latest)
+[![Platform](https://img.shields.io/badge/platform-macOS-black)](#系统要求)
+[![License](https://img.shields.io/github/license/343534-code/ecdict-macos-dictionary)](LICENSE)
+
+**把约 340 万条 ECDICT 英汉词条带入 macOS 原生查词体验。**
+
+这是一款为 Apple 自带“词典”应用制作的大规模离线英汉词典。安装后无需打开浏览器，即可在 Dictionary.app、右键“查询”和触控板三指轻点中查看音标、词性与中文释义。数据保存在本机，不需联网、账号或常驻进程。
+
+[下载最新版](https://github.com/343534-code/ecdict-macos-dictionary/releases/latest) · [安装指南](#macos-安装流程) · [常见问题](#常见问题) · [从源码构建](#从源码构建)
 
 > [!IMPORTANT]
 > 首次启用时，除了勾选“ECDICT 简明英汉字典”，还需在“词典”设置中至少勾选一个 macOS 系统自带词典。在部分 macOS 版本上，只启用第三方词典可能无法正常显示查询结果。
 
 ## 产品介绍
 
-ECDICT macOS Dictionary 适合希望在阅读、写作、编程和学习过程中快速查词，同时不希望依赖浏览器、广告或网络服务的用户。
+ECDICT macOS Dictionary 基于 [skywind3000/ECDICT](https://github.com/skywind3000/ECDICT) 1.0.28 数据制作，将上游 MDX 转换为 Apple `Dictionary.app` 可直接读取的 `.dictionary` 格式。它适合在阅读、写作、编程和学习时追求快速、安静且无广告查词体验的用户。
 
-安装后可通过以下入口查询：
+| 项目 | 说明 |
+| --- | --- |
+| 词典数据 | ECDICT 1.0.28，约 340 万条词条 |
+| 查询方式 | Dictionary.app、三指轻点、右键“查询”及部分系统文本服务 |
+| 词条内容 | 词头、音标、词性、中文释义、词频与考试标签 |
+| 运行方式 | 完全离线，无账号、无广告、无常驻进程 |
+| 其他格式 | 同时提供 MDX，可导入欧路词典、GoldenDict 和 MDict 等软件 |
+
+安装后可通过以下入口查词：
 
 - macOS 自带“词典”应用；
 - 在支持的应用中选中单词后使用“查询”；
@@ -19,17 +35,15 @@ ECDICT macOS Dictionary 适合希望在阅读、写作、编程和学习过程�
 
 ### 主要特点
 
-- 约 340 万条词条，包含单词、变形、短语、专有名词和大量扩展词目；
-- 数据完全保存在本机，查询不需要联网；
+- 收录单词、变形、短语、专有名词和大量扩展词目；
 - 独立显示词头、音标、词性、中文释义和词频/考试标签；
 - 采用适配 macOS 深色外观和快速查询面板的结构化样式；
-- 不安装常驻进程，不收集数据，也不需要注册账号；
-- 同时提供原始 MDX 文件，可用于欧路词典、GoldenDict、MDict 等软件；
+- 词典数据完全保存在本机，不收集使用数据；
 - 提供转换脚本和构建配置，便于审查、修改和复现。
 
 ## 系统要求
 
-- macOS 10.11 或更高版本；
+- macOS 10.11 或更高版本（构建目标；未逐一验证所有历史版本）；
 - 约 500 MB 可用磁盘空间；
 - 安装过程不需要管理员密码。
 
@@ -39,24 +53,40 @@ ECDICT macOS Dictionary 适合希望在阅读、写作、编程和学习过程�
 
 | 文件 | 用途 |
 | --- | --- |
-| `ECDICT-macOS-Dictionary-v1.0.0.zip` | macOS Dictionary.app 安装包（推荐） |
+| `ECDICT-macOS-Dictionary-v1.0.1.zip` | macOS Dictionary.app 安装包（推荐） |
 | `ECDICT-MDX-1.0.28.mdx` | 上游官方 MDX，适用于欧路词典、GoldenDict、MDict 等 |
+
+### SHA-256 校验值
+
+```text
+a97debcf691a75c69264994be306672d2fcb821ea72096b1640f6cd104dbe238  ECDICT-macOS-Dictionary-v1.0.1.zip
+275e71b58fd359bfe649af1cbee533ea81770bdbc53ec4a34567f84720a5751b  ECDICT-MDX-1.0.28.mdx
+```
 
 ## macOS 安装流程
 
+### 安装前清理旧测试版（如果安装过）
+
+1. 完全退出 macOS“词典”应用，不要只关闭窗口。
+2. 在“词典”设置中取消勾选以前安装的 ECDICT 版本。
+3. 前往 `~/Library/Dictionaries/`，移走名称中含“优化版”、“高对比版”或“结构化版”的旧 `.dictionary` 文件夹。
+
+首次安装可直接跳过本节。
+
 ### 方法一：通过访达安装
 
-1. 下载 `ECDICT-macOS-Dictionary-v1.0.0.zip`。
+1. 下载 `ECDICT-macOS-Dictionary-v1.0.1.zip`。
 2. 双击 ZIP 文件解压，得到 `ECDICT 简明英汉字典.dictionary`。
-3. 在访达菜单中选择“前往”→“前往文件夹…”。
-4. 输入 `~/Library/Dictionaries/` 并按回车。
-5. 如果 `Dictionaries` 文件夹不存在，请在 `~/Library/` 中新建该文件夹。
-6. 将整个 `.dictionary` 文件夹复制到 `~/Library/Dictionaries/`，不要只复制其中的 `Contents`。
-7. 完全退出并重新打开 macOS“词典”应用。
-8. 打开“词典”→“设置…”。
+3. 完全退出 macOS“词典”应用（按 `Command-Q`）。
+4. 在访达菜单中选择“前往”→“前往文件夹…”。
+5. 输入 `~/Library/` 并按回车。
+6. 打开其中的 `Dictionaries` 文件夹；如果不存在，请新建一个名为 `Dictionaries` 的文件夹。
+7. 将整个 `ECDICT 简明英汉字典.dictionary` 复制进去，**不要只复制其中的 `Contents`**。
+8. 重新打开 macOS“词典”，然后打开“词典”→“设置…”。
 9. 在列表底部找到并勾选“ECDICT 简明英汉字典”。
-10. **同时保留至少一个 macOS 系统自带词典为勾选状态**，例如系统提供的英语词典或英汉词典。
+10. **必须同时勾选至少一个 macOS 系统自带词典**，例如系统提供的英语词典或英汉词典。在部分 macOS 版本上，只勾选 ECDICT 可能无法显示释义。
 11. 可将 ECDICT 拖到列表前部，使系统查询优先显示本词典。
+12. 再次完全退出并重新打开“词典”，搜索 `two` 确认可以正常显示释义。
 
 ### 方法二：终端安装
 
@@ -69,7 +99,7 @@ ditto "ECDICT 简明英汉字典.dictionary" \
 killall Dictionary DictionaryServiceHelper 2>/dev/null || true
 ```
 
-随后打开“词典”→“设置…”，勾选该词典，并确认至少一个系统自带词典也已勾选。
+随后打开“词典”→“设置…”，勾选该词典，并**同时勾选至少一个系统自带词典**。再次完全退出并重新打开“词典”，搜索 `two` 测试。
 
 ## 启用三指查询
 
@@ -126,6 +156,8 @@ killall Dictionary DictionaryServiceHelper 2>/dev/null || true
 
 这是部分 macOS 版本加载第三方词典时的兼容性要求，不代表 ECDICT 需要联网。
 
+如果仍无法显示释义，请检查 `~/Library/Dictionaries/` 中是否还存在以前的 ECDICT 测试版；移走旧版后，再次完全退出并重新打开“词典”。
+
 ### 三指查询没有出现 ECDICT
 
 系统查询只使用“词典”设置中已启用的来源。请勾选本词典，并将它拖到靠前位置。已经打开的查询浮窗不会即时刷新，需要关闭后重新触发。
@@ -143,9 +175,17 @@ macOS 的三指查询浮窗会过滤或覆盖第三方词典的部分 CSS。Dict
 构建需要：
 
 - Python 3；
-- `readmdict`；
+- `readmdict==0.1.1` 和 `python-lzo==1.15`；
+- LZO 系统库（Homebrew 用户可执行 `brew install lzo`）；
 - Apple Dictionary Development Kit；
 - 上游 ECDICT MDX 文件。
+
+先安装 LZO 系统库，再安装已锁定的 Python 依赖：
+
+```bash
+brew install lzo
+python3 -m pip install -r requirements.txt
+```
 
 导出结构化 XML：
 
@@ -170,12 +210,13 @@ Apple 已不再面向普通用户维护 Dictionary Development Kit，因此不�
 ```text
 dictionary-source/       样式、XSL、Info.plist 和 Makefile
 scripts/                 MDX 到 Apple Dictionary XML 的转换脚本
-LICENSE                  上游 MIT License
+requirements.txt         已锁定的 Python 构建依赖
+LICENSE                  ECDICT 1.0.28 的 MIT License
 NOTICE                   数据来源和非官方声明
 ```
 
 ## 来源与许可证
 
-词典数据和上游 MDX 来自 [ECDICT 1.0.28](https://github.com/skywind3000/ECDICT/releases/tag/1.0.28)。ECDICT 以 MIT License 发布；本仓库保留其许可声明与来源说明。
+词典数据和上游 MDX 来自 [ECDICT 1.0.28](https://github.com/skywind3000/ECDICT/releases/tag/1.0.28)。本仓库保留该版本中 `Copyright (c) 2017 Linwei` 的 MIT License 许可声明；仓库中的转换脚本和排版修改也按同一 MIT License 提供。
 
 本项目是非官方转换版本，与 Apple Inc. 及 ECDICT 原作者均无隶属、合作或背书关系。词典内容按原许可证“按原样”提供，不保证所有释义均准确或适合专业用途。

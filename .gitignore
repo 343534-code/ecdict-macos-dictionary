@@ -1,8 +1,9 @@
 .DS_Store
+__pycache__/
+*.pyc
 dist/
 *.dictionary
 *.zip
 *.mdx
 objects/
 ECDICT-styled.xml
-

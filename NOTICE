@@ -4,6 +4,10 @@ https://github.com/skywind3000/ECDICT
 Upstream release used: ECDICT 1.0.28 (2017-09-20)
 https://github.com/skywind3000/ECDICT/releases/tag/1.0.28
 
+ECDICT 1.0.28 is distributed under the MIT License with the upstream
+copyright notice: Copyright (c) 2017 Linwei.
+
 This repository provides an unofficial macOS Dictionary conversion and
 formatting layer. It is not endorsed by Apple Inc. or the ECDICT maintainers.
-
+The conversion scripts and formatting changes in this repository are made
+available under the same MIT License.

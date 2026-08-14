@@ -1,0 +1,2 @@
+readmdict==0.1.1
+python-lzo==1.15
