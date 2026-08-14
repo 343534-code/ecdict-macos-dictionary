@@ -1,59 +1,155 @@
 @charset "UTF-8";
-body { font-family: -apple-system, "PingFang SC", sans-serif; line-height: 1.55; color: CanvasText; }
-h1 { margin: 0 0 5px; font-size: 1.45em; font-weight: 700; color: CanvasText; }
-.pronunciation { color: #ffffff !important; font-family: ui-monospace, Menlo, monospace; margin: 0 0 8px; font-size: 1em; font-weight: 600; opacity: 1; }
-.sense { margin: 5px 0; }
-.pos { display: inline-block; min-width: 2.1em; margin-right: 7px; color: #0a67c7; font-style: italic; font-weight: 650; }
-.meta { margin-top: 8px; padding-top: 6px; border-top: 1px solid -apple-system-separator; color: -apple-system-secondary-label; font-size: .9em; }
-
-/* The three-finger Lookup panel does not honor CanvasText consistently. */
-@media (prefers-color-scheme: dark) {
-  body, h1, .sense { color: #f5f5f7 !important; }
-  .pronunciation { color: #ffffff !important; }
-  .meta { color: #b8bbc2 !important; }
-  .meta { border-top-color: rgba(255, 255, 255, .22) !important; }
-  .pos { color: #2997ff !important; }
-}
-
-/* DictionaryService's quick-lookup renderer may not report its color scheme. */
-html.apple_client-panel h1,
-html.apple_client-panel .sense { color: #f5f5f7 !important; }
-/* Match the high-contrast hierarchy used by Apple's built-in dictionaries. */
-html.apple_client-panel .pronunciation { color: #ffffff !important; font-weight: 600 !important; opacity: 1 !important; }
-html.apple_client-panel .meta { color: #d9d9de !important; font-weight: 500 !important; opacity: 1 !important; }
-
-@media (prefers-color-scheme: light) {
-  body, h1, .sense { color: #1d1d1f !important; }
-  .pronunciation { color: #ffffff !important; }
-  .meta { color: #5f6368 !important; }
-  .meta { border-top-color: rgba(0, 0, 0, .15) !important; }
-}
 @namespace d url(http://www.apple.com/DTDs/DictionaryService-1.0.rng);
+
+html {
+  color-scheme: light dark;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+  font-size: 100%;
+  line-height: 1.55;
+  color: #1d1d1f;
+  color: -apple-system-label;
+}
 
 d|entry {
 }
 
-h1	{
-	font-size: 150%;
+h1 {
+  margin: 0 0 4px;
+  color: #1d1d1f;
+  color: -apple-system-label;
+  font-size: 1.5em;
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
-h3	{
-	font-size: 100%;
+.pronunciation {
+  margin: 0 0 9px;
+  color: #3a3a3c;
+  color: -apple-system-label;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.98em;
+  font-weight: 550;
+  opacity: 1;
+}
+
+.sense {
+  margin: 5px 0;
+  color: #1d1d1f;
+  color: -apple-system-label;
+}
+
+.pos {
+  display: inline-block;
+  min-width: 2.25em;
+  margin-right: 7px;
+  color: #0066cc;
+  color: -apple-system-link;
+  font-style: italic;
+  font-weight: 650;
+}
+
+.badges {
+  margin: 1px 0 8px;
+}
+
+.badge {
+  display: inline-block;
+  margin: 0 6px 3px 0;
+  padding: 1px 7px 2px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.06);
+  color: #4b4b50;
+  color: -apple-system-secondary-label;
+  font-size: 0.78em;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.meta {
+  margin-top: 7px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(0, 0, 0, 0.14);
+  border-top-color: -apple-system-separator;
+  color: #5f6368;
+  color: -apple-system-secondary-label;
+  font-size: 0.88em;
+  font-weight: 500;
 }
 
 span.column {
-	display: block;
-	border: solid 2px #c0c0c0;
-	margin-left: 2em;
-	margin-right: 2em;
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
-	padding: 0.5em;
+  display: block;
+  margin: 0.5em 2em;
+  padding: 0.5em;
+  border: 1px solid rgba(128, 128, 128, 0.45);
+  border-radius: 6px;
 }
 
-@media (prefers-color-scheme: dark)
-{
-	body {
-		color: white;
-	}
+@media (prefers-color-scheme: light) {
+  body, h1, .sense, .pronunciation {
+    color: #1d1d1f !important;
+    -webkit-text-fill-color: #1d1d1f !important;
+  }
+
+  .pos {
+    color: #0066cc !important;
+    -webkit-text-fill-color: #0066cc !important;
+  }
+
+  .meta, .badge {
+    color: #5f6368 !important;
+    -webkit-text-fill-color: #5f6368 !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body, h1, .sense, .pronunciation {
+    color: #f5f5f7 !important;
+    -webkit-text-fill-color: #f5f5f7 !important;
+  }
+
+  .pos {
+    color: #4aa3ff !important;
+    -webkit-text-fill-color: #4aa3ff !important;
+  }
+
+  .meta, .badge {
+    color: #d1d1d6 !important;
+    -webkit-text-fill-color: #d1d1d6 !important;
+  }
+
+  .meta {
+    border-top-color: rgba(255, 255, 255, 0.2) !important;
+  }
+
+  .badge {
+    border-color: rgba(255, 255, 255, 0.18) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+  }
+}
+
+/* Quick Lookup may not expose its appearance through the media query. */
+html.apple_client-panel body,
+html.apple_client-panel h1,
+html.apple_client-panel .sense,
+html.apple_client-panel .pronunciation {
+  color: -apple-system-label !important;
+  -webkit-text-fill-color: -apple-system-label !important;
+  opacity: 1 !important;
+}
+
+html.apple_client-panel .pos {
+  color: -apple-system-link !important;
+  -webkit-text-fill-color: -apple-system-link !important;
+}
+
+html.apple_client-panel .meta,
+html.apple_client-panel .badge {
+  color: -apple-system-secondary-label !important;
+  -webkit-text-fill-color: -apple-system-secondary-label !important;
+  opacity: 1 !important;
 }

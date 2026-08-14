@@ -6,6 +6,9 @@ https://github.com/skywind3000/ECDICT/releases/tag/1.0.28
 
 ECDICT 1.0.28 is distributed under the MIT License with the upstream
 copyright notice: Copyright (c) 2017 Linwei.
+The embedded description in the 1.0.28 MDX additionally describes the data
+as dual-licensed under "MIT / CC" without identifying a specific CC variant.
+This repository preserves the MIT license text as its redistribution basis.
 
 This repository provides an unofficial macOS Dictionary conversion and
 formatting layer. It is not endorsed by Apple Inc. or the ECDICT maintainers.
