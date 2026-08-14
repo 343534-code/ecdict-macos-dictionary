@@ -16,6 +16,19 @@ def clean(s: str) -> str:
     s = unescape(s).replace('\r', '')
     return spaces.sub(' ', s).strip()
 
+def render_rank_badges(value: str) -> str | None:
+    """Expand the MDX's compact Oxford/Collins marker into readable badges."""
+    match = re.fullmatch(r"-?(K)?([1-5])?", value)
+    if not match or not any(match.groups()):
+        return None
+    labels = []
+    if match.group(1):
+        labels.append("Oxford 3000")
+    if match.group(2):
+        labels.append(f"Collins {match.group(2)}★")
+    badges = ''.join(f'<span class="badge">{label}</span>' for label in labels)
+    return f'<div class="badges">{badges}</div>'
+
 def render(key: str, raw: bytes) -> str:
     text = breaks.sub('\n', raw.decode('utf-8', 'replace'))
     # MDX stylesheet markers: 1=headword, 3=phonetic, 4=metadata.
@@ -39,6 +52,8 @@ def render(key: str, raw: bytes) -> str:
                 # Store pronunciation as primary heading content so it keeps the
                 # foreground text color in both light and dark appearances.
                 parts.append(f'<h3 class="pronunciation">{value}</h3>')
+            elif style == '4' and (badges := render_rank_badges(line)):
+                parts.append(badges)
             elif style == '4' or line.startswith(('时态:', '级别:', '(')):
                 parts.append(f'<div class="meta">{value}</div>')
             elif re.match(r'^(n|v[ti]?|a|ad|prep|conj|pron|aux|num|int)\.', line, re.I):

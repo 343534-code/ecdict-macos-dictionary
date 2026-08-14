@@ -13,6 +13,14 @@
 > [!IMPORTANT]
 > 首次启用时，除了勾选“ECDICT 简明英汉字典”，还需在“词典”设置中至少勾选一个 macOS 系统自带词典。在部分 macOS 版本上，只启用第三方词典可能无法正常显示查询结果。
 
+## 三步安装
+
+1. 从 [Releases](https://github.com/343534-code/ecdict-macos-dictionary/releases/latest) 下载 ZIP 并解压。
+2. 把整个 `ECDICT 简明英汉字典.dictionary` 复制到 `~/Library/Dictionaries/`。
+3. 打开 Mac“词典”→“设置…”（`Command-,`），勾选 ECDICT，并**同时勾选至少一个系统自带词典**。
+
+首次安装、旧版清理和故障排查请参阅下方的[macOS 安装流程](#macos-安装流程)。
+
 ## 产品介绍
 
 ECDICT macOS Dictionary 基于 [skywind3000/ECDICT](https://github.com/skywind3000/ECDICT) 1.0.28 数据制作，将上游 MDX 转换为 Apple `Dictionary.app` 可直接读取的 `.dictionary` 格式。它适合在阅读、写作、编程和学习时追求快速、安静且无广告查词体验的用户。
@@ -24,6 +32,14 @@ ECDICT macOS Dictionary 基于 [skywind3000/ECDICT](https://github.com/skywind30
 | 词条内容 | 词头、音标、词性、中文释义、词频与考试标签 |
 | 运行方式 | 完全离线，无账号、无广告、无常驻进程 |
 | 其他格式 | 同时提供 MDX，可导入欧路词典、GoldenDict 和 MDict 等软件 |
+
+## 实际查询效果
+
+| ECDICT | macOS 系统自带词典 |
+| --- | --- |
+| ![ECDICT 查询 two 的实际效果](docs/images/dictionary-app-two.jpg) | ![macOS 系统自带词典查询 two 的效果](docs/images/apple-dictionary-two.jpg) |
+
+> ECDICT 截图来自与 v1.0.1 使用相同正文、索引和样式的兼容构建，因此界面中仍显示旧测试版名称。本图仅展示实际排版，没有使用模拟或生成界面。
 
 安装后可通过以下入口查词：
 
@@ -217,6 +233,6 @@ NOTICE                   数据来源和非官方声明
 
 ## 来源与许可证
 
-词典数据和上游 MDX 来自 [ECDICT 1.0.28](https://github.com/skywind3000/ECDICT/releases/tag/1.0.28)。本仓库保留该版本中 `Copyright (c) 2017 Linwei` 的 MIT License 许可声明；仓库中的转换脚本和排版修改也按同一 MIT License 提供。
+词典数据和上游 MDX 来自 [ECDICT 1.0.28](https://github.com/skywind3000/ECDICT/releases/tag/1.0.28)。本仓库保留该版本中 `Copyright (c) 2017 Linwei` 的 MIT License 许可声明；MDX 内嵌说明另外将数据描述为“MIT / CC”双协议，但未指明具体 CC 版本。本仓库以已保留的 MIT 文本作为再分发依据，转换脚本和排版修改也按同一 MIT License 提供。
 
 本项目是非官方转换版本，与 Apple Inc. 及 ECDICT 原作者均无隶属、合作或背书关系。词典内容按原许可证“按原样”提供，不保证所有释义均准确或适合专业用途。
