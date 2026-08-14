@@ -37,9 +37,9 @@ ECDICT macOS Dictionary 基于 [skywind3000/ECDICT](https://github.com/skywind30
 
 | ECDICT | macOS 系统自带词典 |
 | --- | --- |
-| ![ECDICT 查询 two 的实际效果](docs/images/dictionary-app-two.jpg) | ![macOS 系统自带词典查询 two 的效果](docs/images/apple-dictionary-two.jpg) |
+| ![ECDICT v1.1.0 查询 two 的实际效果](docs/images/dictionary-app-two-v110.jpg) | ![macOS 系统自带词典查询 two 的效果](docs/images/apple-dictionary-two.jpg) |
 
-> ECDICT 截图来自与 v1.0.1 使用相同正文、索引和样式的兼容构建，因此界面中仍显示旧测试版名称。本图仅展示实际排版，没有使用模拟或生成界面。
+> ECDICT 截图来自 v1.1.0 在 macOS“词典”App 中查询 `two` 的实际运行画面，没有使用模拟或生成界面。正式 Release 的词典名称不含“候选版”。
 
 安装后可通过以下入口查词：
 
@@ -69,13 +69,13 @@ ECDICT macOS Dictionary 基于 [skywind3000/ECDICT](https://github.com/skywind30
 
 | 文件 | 用途 |
 | --- | --- |
-| `ECDICT-macOS-Dictionary-v1.0.1.zip` | macOS Dictionary.app 安装包（推荐） |
+| `ECDICT-macOS-Dictionary-v1.1.0.zip` | macOS Dictionary.app 安装包（推荐） |
 | `ECDICT-MDX-1.0.28.mdx` | 上游官方 MDX，适用于欧路词典、GoldenDict、MDict 等 |
 
 ### SHA-256 校验值
 
 ```text
-a97debcf691a75c69264994be306672d2fcb821ea72096b1640f6cd104dbe238  ECDICT-macOS-Dictionary-v1.0.1.zip
+901e928048dc2a1dbb86916469c1590e589846dc24b54bfe6136753e509c6d23  ECDICT-macOS-Dictionary-v1.1.0.zip
 275e71b58fd359bfe649af1cbee533ea81770bdbc53ec4a34567f84720a5751b  ECDICT-MDX-1.0.28.mdx
 ```
 
@@ -91,7 +91,7 @@ a97debcf691a75c69264994be306672d2fcb821ea72096b1640f6cd104dbe238  ECDICT-macOS-D
 
 ### 方法一：通过访达安装
 
-1. 下载 `ECDICT-macOS-Dictionary-v1.0.1.zip`。
+1. 下载 `ECDICT-macOS-Dictionary-v1.1.0.zip`。
 2. 双击 ZIP 文件解压，得到 `ECDICT 简明英汉字典.dictionary`。
 3. 完全退出 macOS“词典”应用（按 `Command-Q`）。
 4. 在访达菜单中选择“前往”→“前往文件夹…”。
@@ -224,7 +224,7 @@ Apple 已不再面向普通用户维护 Dictionary Development Kit，因此不�
 ## 项目结构
 
 ```text
-dictionary-source/       样式、XSL、Info.plist 和 Makefile
+dictionary-source/       样式、XSL、偏好设置、Info.plist 和 Makefile
 scripts/                 MDX 到 Apple Dictionary XML 的转换脚本
 requirements.txt         已锁定的 Python 构建依赖
 LICENSE                  ECDICT 1.0.28 的 MIT License
