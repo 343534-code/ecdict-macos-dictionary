@@ -5,11 +5,11 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.ecdict.dictionary.concise-english-chinese.v110</string>
+	<string>com.ecdict.dictionary.concise-english-chinese.v111</string>
 	<key>CFBundleName</key>
 	<string>ECDICT 简明英汉字典</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1.0</string>
+	<string>1.1.1</string>
 	<key>DCSDictionaryCopyright</key>
 	<string>ECDICT 1.0.28 © 2017 Linwei; upstream MDX declares MIT / CC dual licensing. This repository includes the MIT License.</string>
 	<key>DCSDictionaryManufacturerName</key>
