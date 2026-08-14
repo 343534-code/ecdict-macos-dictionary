@@ -69,32 +69,6 @@
 	</xsl:if>
 </xsl:template>
 
-<!-- High-contrast inline styles for macOS three-finger Quick Look. -->
-<xsl:template match="h1">
-	<h1 style="color: CanvasText !important; opacity: 1 !important;">
-		<xsl:apply-templates select="@*|node()" />
-	</h1>
-</xsl:template>
-
-<xsl:template match="div[@class='pronunciation'] | h3[@class='pronunciation']">
-	<h3 class="pronunciation" style="color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; opacity: 1 !important; font-weight: 600 !important;">
-		<xsl:apply-templates select="node()" />
-	</h3>
-</xsl:template>
-
-<xsl:template match="div[@class='sense']">
-	<div class="sense" style="color: CanvasText !important; opacity: 1 !important;">
-		<xsl:apply-templates select="node()" />
-	</div>
-</xsl:template>
-
-<xsl:template match="div[@class='meta']">
-	<div class="meta" style="color: CanvasText !important; font-weight: 500 !important; opacity: 0.88 !important;">
-		<xsl:apply-templates select="node()" />
-	</div>
-</xsl:template>
-
-
 <!--
 	Default rule for all other tags
 -->

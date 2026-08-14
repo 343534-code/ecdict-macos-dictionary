@@ -1,6 +1,9 @@
 # ECDICT macOS Dictionary
 
-面向 macOS 系统词典的超大规模、完全离线英汉词典。本项目将 [skywind3000/ECDICT](https://github.com/skywind3000/ECDICT) 的“简明英汉字典增强版”转换为 Apple `Dictionary.app` 可直接使用的 `.dictionary` 格式，并提供适合系统深色界面的结构化排版。
+面向 macOS 系统词典的超大规模、完全离线英汉词典。本项目将 [skywind3000/ECDICT](https://github.com/skywind3000/ECDICT) 的“简明英汉字典增强版”转换为 Apple `Dictionary.app` 可直接使用的 `.dictionary` 格式，并为释义、音标、词性和标签提供清晰的结构化排版。
+
+> [!IMPORTANT]
+> 首次启用时，除了勾选“ECDICT 简明英汉字典”，还需在“词典”设置中至少勾选一个 macOS 系统自带词典。在部分 macOS 版本上，只启用第三方词典可能无法正常显示查询结果。
 
 ## 产品介绍
 
@@ -19,7 +22,7 @@ ECDICT macOS Dictionary 适合希望在阅读、写作、编程和学习过程�
 - 约 340 万条词条，包含单词、变形、短语、专有名词和大量扩展词目；
 - 数据完全保存在本机，查询不需要联网；
 - 独立显示词头、音标、词性、中文释义和词频/考试标签；
-- 针对 macOS 深色外观提供高对比样式；
+- 采用适配 macOS 深色外观和快速查询面板的结构化样式；
 - 不安装常驻进程，不收集数据，也不需要注册账号；
 - 同时提供原始 MDX 文件，可用于欧路词典、GoldenDict、MDict 等软件；
 - 提供转换脚本和构建配置，便于审查、修改和复现。
@@ -36,23 +39,24 @@ ECDICT macOS Dictionary 适合希望在阅读、写作、编程和学习过程�
 
 | 文件 | 用途 |
 | --- | --- |
-| `ECDICT-macOS-Structured-High-Contrast-v2.0.zip` | macOS Dictionary.app 使用的结构化高对比版 |
-| `简明英汉字典增强版-ECDICT-1.0.28.mdx` | 上游官方 MDX，适用于欧路词典、GoldenDict、MDict 等 |
+| `ECDICT-macOS-Dictionary-v1.0.0.zip` | macOS Dictionary.app 安装包（推荐） |
+| `ECDICT-MDX-1.0.28.mdx` | 上游官方 MDX，适用于欧路词典、GoldenDict、MDict 等 |
 
 ## macOS 安装流程
 
 ### 方法一：通过访达安装
 
-1. 下载 `ECDICT-macOS-Structured-High-Contrast-v2.0.zip`。
-2. 双击 ZIP 文件解压，得到 `ECDICT 简明英汉字典（结构化高对比版）.dictionary`。
+1. 下载 `ECDICT-macOS-Dictionary-v1.0.0.zip`。
+2. 双击 ZIP 文件解压，得到 `ECDICT 简明英汉字典.dictionary`。
 3. 在访达菜单中选择“前往”→“前往文件夹…”。
 4. 输入 `~/Library/Dictionaries/` 并按回车。
 5. 如果 `Dictionaries` 文件夹不存在，请在 `~/Library/` 中新建该文件夹。
 6. 将整个 `.dictionary` 文件夹复制到 `~/Library/Dictionaries/`，不要只复制其中的 `Contents`。
 7. 完全退出并重新打开 macOS“词典”应用。
 8. 打开“词典”→“设置…”。
-9. 在列表底部找到并勾选“ECDICT 简明英汉字典（结构化高对比版）”。
-10. 可将它拖到列表前部，使系统查询优先显示本词典。
+9. 在列表底部找到并勾选“ECDICT 简明英汉字典”。
+10. **同时保留至少一个 macOS 系统自带词典为勾选状态**，例如系统提供的英语词典或英汉词典。
+11. 可将 ECDICT 拖到列表前部，使系统查询优先显示本词典。
 
 ### 方法二：终端安装
 
@@ -60,12 +64,12 @@ ECDICT macOS Dictionary 适合希望在阅读、写作、编程和学习过程�
 
 ```bash
 mkdir -p "$HOME/Library/Dictionaries"
-ditto "ECDICT 简明英汉字典（结构化高对比版）.dictionary" \
-  "$HOME/Library/Dictionaries/ECDICT 简明英汉字典（结构化高对比版）.dictionary"
+ditto "ECDICT 简明英汉字典.dictionary" \
+  "$HOME/Library/Dictionaries/ECDICT 简明英汉字典.dictionary"
 killall Dictionary DictionaryServiceHelper 2>/dev/null || true
 ```
 
-随后打开“词典”→“设置…”，勾选该词典。
+随后打开“词典”→“设置…”，勾选该词典，并确认至少一个系统自带词典也已勾选。
 
 ## 启用三指查询
 
@@ -79,7 +83,7 @@ killall Dictionary DictionaryServiceHelper 2>/dev/null || true
 
 ## 在欧路词典等软件中使用 MDX
 
-1. 下载 `简明英汉字典增强版-ECDICT-1.0.28.mdx`。
+1. 下载 `ECDICT-MDX-1.0.28.mdx`。
 2. 在目标软件中打开“词典管理”或“导入词典”。
 3. 选择下载的 `.mdx` 文件。
 4. 启用词典并根据需要调整查询优先级。
@@ -112,6 +116,15 @@ killall Dictionary DictionaryServiceHelper 2>/dev/null || true
 - 完全退出并重新打开“词典”；
 - 在“词典”→“设置…”列表底部查找并手动勾选；
 - 必要时注销并重新登录 macOS。
+
+### 能看到 ECDICT，但查询不正常
+
+- 打开“词典”→“设置…”；
+- 确认“ECDICT 简明英汉字典”已勾选；
+- 再至少勾选一个 macOS 系统自带词典；
+- 完全退出“词典”并重新打开，然后再次查询。
+
+这是部分 macOS 版本加载第三方词典时的兼容性要求，不代表 ECDICT 需要联网。
 
 ### 三指查询没有出现 ECDICT
 

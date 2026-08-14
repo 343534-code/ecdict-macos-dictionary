@@ -5,11 +5,11 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.ecdict.dictionary.concise-english-chinese.structured.v20</string>
+	<string>com.ecdict.dictionary.concise-english-chinese.v100</string>
 	<key>CFBundleName</key>
-	<string>ECDICT 简明英汉字典（优化版）</string>
+	<string>ECDICT 简明英汉字典</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0</string>
+	<string>1.0.0</string>
 	<key>DCSDictionaryCopyright</key>
 	<string>ECDICT data: MIT / CC; formatted for personal use.</string>
 	<key>DCSDictionaryManufacturerName</key>
