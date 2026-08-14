@@ -13,6 +13,16 @@
 > [!IMPORTANT]
 > 首次启用时，除了勾选“ECDICT 简明英汉字典”，还需在“词典”设置中至少勾选一个 macOS 系统自带词典。在部分 macOS 版本上，只启用第三方词典可能无法正常显示查询结果。
 
+## 一行命令安装（推荐）
+
+打开“终端”，粘贴下面一整行并按回车：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/343534-code/ecdict-macos-dictionary/v1.1.1/scripts/install.sh | /bin/bash
+```
+
+脚本会从 GitHub Releases 下载最新版、核对 SHA-256、备份同名旧版，并安装到当前用户的 `~/Library/Dictionaries/`，不需要管理员密码。脚本内容可在运行前先打开 [`scripts/install.sh`](scripts/install.sh) 审查。
+
 ## 三步安装
 
 1. 从 [Releases](https://github.com/343534-code/ecdict-macos-dictionary/releases/latest) 下载 ZIP 并解压。
@@ -61,7 +71,7 @@ ECDICT macOS Dictionary 基于 [skywind3000/ECDICT](https://github.com/skywind30
 
 - macOS 10.11 或更高版本（构建目标；未逐一验证所有历史版本）；
 - 约 500 MB 可用磁盘空间；
-- 安装过程不需要管理员密码。
+- 一行命令和 ZIP 安装不需要管理员密码；PKG 系统级安装需要管理员密码。
 
 ## 下载文件说明
 
@@ -69,13 +79,16 @@ ECDICT macOS Dictionary 基于 [skywind3000/ECDICT](https://github.com/skywind30
 
 | 文件 | 用途 |
 | --- | --- |
-| `ECDICT-macOS-Dictionary-v1.1.0.zip` | macOS Dictionary.app 安装包（推荐） |
+| `ECDICT-macOS-Dictionary-v1.1.1.zip` | 用户级 ZIP 安装包，无需管理员密码（推荐） |
+| `ECDICT-macOS-Dictionary-v1.1.1.pkg` | 系统级图形化安装包，需要管理员密码（未签名） |
 | `ECDICT-MDX-1.0.28.mdx` | 上游官方 MDX，适用于欧路词典、GoldenDict、MDict 等 |
+| `SHA256SUMS.txt` | Release 附件的 SHA-256 校验值 |
 
 ### SHA-256 校验值
 
 ```text
-901e928048dc2a1dbb86916469c1590e589846dc24b54bfe6136753e509c6d23  ECDICT-macOS-Dictionary-v1.1.0.zip
+c226933719eb01183e1fd3d12ec3bbc1aa91a66660914b3745c66486add333bc  ECDICT-macOS-Dictionary-v1.1.1.zip
+6c22083484d51a34160111da384d46766b61b00ccec18c5162d2fc91f79e7a6a  ECDICT-macOS-Dictionary-v1.1.1.pkg
 275e71b58fd359bfe649af1cbee533ea81770bdbc53ec4a34567f84720a5751b  ECDICT-MDX-1.0.28.mdx
 ```
 
@@ -89,9 +102,19 @@ ECDICT macOS Dictionary 基于 [skywind3000/ECDICT](https://github.com/skywind30
 
 首次安装可直接跳过本节。
 
-### 方法一：通过访达安装
+### 方法一：一行命令安装（推荐）
 
-1. 下载 `ECDICT-macOS-Dictionary-v1.1.0.zip`。
+打开“终端”，执行：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/343534-code/ecdict-macos-dictionary/v1.1.1/scripts/install.sh | /bin/bash
+```
+
+脚本会自动完成下载、SHA-256 校验、旧版备份和用户级安装。完成后仍需打开“词典”→“设置…”，勾选 ECDICT 和至少一个系统自带词典。
+
+### 方法二：通过访达安装
+
+1. 下载 `ECDICT-macOS-Dictionary-v1.1.1.zip`。
 2. 双击 ZIP 文件解压，得到 `ECDICT 简明英汉字典.dictionary`。
 3. 完全退出 macOS“词典”应用（按 `Command-Q`）。
 4. 在访达菜单中选择“前往”→“前往文件夹…”。
@@ -104,7 +127,17 @@ ECDICT macOS Dictionary 基于 [skywind3000/ECDICT](https://github.com/skywind30
 11. 可将 ECDICT 拖到列表前部，使系统查询优先显示本词典。
 12. 再次完全退出并重新打开“词典”，搜索 `two` 确认可以正常显示释义。
 
-### 方法二：终端安装
+### 方法三：通过 PKG 图形化安装
+
+1. 从 Releases 下载 `ECDICT-macOS-Dictionary-v1.1.1.pkg`。
+2. 双击安装包，并按提示输入管理员密码。
+3. 安装包会把词典放入系统级 `/Library/Dictionaries/`，供这台 Mac 的用户使用。
+4. 打开“词典”→“设置…”，勾选 ECDICT，并同时勾选至少一个系统自带词典。
+
+> [!WARNING]
+> 当前 PKG 没有使用 Apple Developer Installer 证书签名。如果 macOS 阻止打开，请确认文件来自本仓库 Release 且 SHA-256 与上方一致，然后在“系统设置”→“隐私与安全性”中选择“仍要打开”。介意未签名安装包时，请使用一行命令或 ZIP 安装。
+
+### 方法四：手动使用终端安装已解压的 ZIP
 
 解压后执行：
 
