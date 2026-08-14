@@ -1,15 +1,31 @@
 # ECDICT macOS Dictionary
 
-面向 macOS 系统词典的超大规模、完全离线英汉词典。本项目将 [skywind3000/ECDICT](https://github.com/skywind3000/ECDICT) 的“简明英汉字典增强版”转换为 Apple `Dictionary.app` 可直接使用的 `.dictionary` 格式，并为释义、音标、词性和标签提供清晰的结构化排版。
+[![Release](https://img.shields.io/github/v/release/343534-code/ecdict-macos-dictionary?label=release)](https://github.com/343534-code/ecdict-macos-dictionary/releases/latest)
+[![Platform](https://img.shields.io/badge/platform-macOS-black)](#系统要求)
+[![License](https://img.shields.io/github/license/343534-code/ecdict-macos-dictionary)](LICENSE)
+
+**把约 340 万条 ECDICT 英汉词条带入 macOS 原生查词体验。**
+
+这是一款为 Apple 自带“词典”应用制作的大规模离线英汉词典。安装后无需打开浏览器，即可在 Dictionary.app、右键“查询”和触控板三指轻点中查看音标、词性与中文释义。数据保存在本机，不需联网、账号或常驻进程。
+
+[下载最新版](https://github.com/343534-code/ecdict-macos-dictionary/releases/latest) · [安装指南](#macos-安装流程) · [常见问题](#常见问题) · [从源码构建](#从源码构建)
 
 > [!IMPORTANT]
 > 首次启用时，除了勾选“ECDICT 简明英汉字典”，还需在“词典”设置中至少勾选一个 macOS 系统自带词典。在部分 macOS 版本上，只启用第三方词典可能无法正常显示查询结果。
 
 ## 产品介绍
 
-ECDICT macOS Dictionary 适合希望在阅读、写作、编程和学习过程中快速查词，同时不希望依赖浏览器、广告或网络服务的用户。
+ECDICT macOS Dictionary 基于 [skywind3000/ECDICT](https://github.com/skywind3000/ECDICT) 1.0.28 数据制作，将上游 MDX 转换为 Apple `Dictionary.app` 可直接读取的 `.dictionary` 格式。它适合在阅读、写作、编程和学习时追求快速、安静且无广告查词体验的用户。
 
-安装后可通过以下入口查询：
+| 项目 | 说明 |
+| --- | --- |
+| 词典数据 | ECDICT 1.0.28，约 340 万条词条 |
+| 查询方式 | Dictionary.app、三指轻点、右键“查询”及部分系统文本服务 |
+| 词条内容 | 词头、音标、词性、中文释义、词频与考试标签 |
+| 运行方式 | 完全离线，无账号、无广告、无常驻进程 |
+| 其他格式 | 同时提供 MDX，可导入欧路词典、GoldenDict 和 MDict 等软件 |
+
+安装后可通过以下入口查词：
 
 - macOS 自带“词典”应用；
 - 在支持的应用中选中单词后使用“查询”；
@@ -19,12 +35,10 @@ ECDICT macOS Dictionary 适合希望在阅读、写作、编程和学习过程�
 
 ### 主要特点
 
-- 约 340 万条词条，包含单词、变形、短语、专有名词和大量扩展词目；
-- 数据完全保存在本机，查询不需要联网；
+- 收录单词、变形、短语、专有名词和大量扩展词目；
 - 独立显示词头、音标、词性、中文释义和词频/考试标签；
 - 采用适配 macOS 深色外观和快速查询面板的结构化样式；
-- 不安装常驻进程，不收集数据，也不需要注册账号；
-- 同时提供原始 MDX 文件，可用于欧路词典、GoldenDict、MDict 等软件；
+- 词典数据完全保存在本机，不收集使用数据；
 - 提供转换脚本和构建配置，便于审查、修改和复现。
 
 ## 系统要求
