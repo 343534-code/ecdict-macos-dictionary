@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ECDICT Semantic Entry",
+  "type": "object",
+  "required": ["schema_version", "word", "pronunciation", "senses", "morphology", "exam_tags", "frequency"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "word": {"type": "string", "minLength": 1},
+    "pronunciation": {"type": "array", "items": {"type": "string"}, "maxItems": 2},
+    "senses": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["pos", "sense_number", "english_definition", "chinese_definition", "examples", "usage_notes"],
+        "properties": {
+          "pos": {"type": "string", "minLength": 1},
+          "sense_number": {"type": "integer", "minimum": 1},
+          "english_definition": {"type": "string", "minLength": 1},
+          "chinese_definition": {"type": "string", "minLength": 1},
+          "domain": {"type": "string"},
+          "examples": {
+            "type": "array",
+            "maxItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["english", "chinese"],
+              "properties": {
+                "english": {"type": "string", "minLength": 1},
+                "chinese": {"type": "string", "minLength": 1}
+              }
+            }
+          },
+          "usage_notes": {"type": "array", "items": {"type": "string"}, "maxItems": 2}
+        }
+      }
+    },
+    "morphology": {"type": "array", "items": {"type": "object"}},
+    "exam_tags": {"type": "array", "items": {"type": "string"}},
+    "frequency": {"type": "object"},
+    "provenance": {"type": "object"}
+  }
+}

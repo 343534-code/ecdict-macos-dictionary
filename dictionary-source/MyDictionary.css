@@ -7,53 +7,230 @@ html {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+  padding: 12px 7% 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Helvetica Neue", sans-serif;
   font-size: 100%;
   line-height: 1.55;
   color: #1d1d1f;
   color: -apple-system-label;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 d|entry {
+  display: block;
+  padding: 2px 0 12px;
+}
+
+d|entry + d|entry {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.entry-header {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-items: center;
+  align-items: center;
+  gap: 6px 8px;
+  margin: 0 0 7px;
 }
 
 h1 {
-  margin: 0 0 4px;
+  max-width: 100%;
+  margin: 0;
   color: #1d1d1f;
   color: -apple-system-label;
   font-size: 1.5em;
   font-weight: 700;
   letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .pronunciation {
-  margin: 0 0 9px;
-  color: #3a3a3c;
-  color: -apple-system-label;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: 2px 12px;
+  max-width: 100%;
+  margin: 0;
+  color: #5f6368;
+  color: -apple-system-secondary-label;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 0.98em;
-  font-weight: 550;
+  font-size: 0.88em;
+  font-weight: 500;
   opacity: 1;
 }
 
+.pronunciation-variant {
+  white-space: nowrap;
+}
+
+.pronunciation-label {
+  margin-right: 4px;
+  color: #8e8e93;
+  color: -apple-system-tertiary-label;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", sans-serif;
+  font-size: 0.78em;
+  font-weight: 600;
+}
+
 .sense {
-  margin: 5px 0;
+  margin: 3px 0;
   color: #1d1d1f;
   color: -apple-system-label;
+  line-height: 1.45;
+}
+
+/* Visually nest definition details below the headword row. */
+.core-senses,
+.entry-details > .inflections,
+.entry-details > .exam-outline,
+.entry-details > .meta,
+.entry-header ~ .inflections,
+.entry-header ~ .exam-outline,
+.entry-header ~ .meta {
+  margin-left: 1.25em;
+}
+
+.core-senses {
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.continuation-pos { visibility: hidden; }
+
+.core-senses-divided {
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.pos-group {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+  margin: 3px 0;
 }
 
 .pos {
-  display: inline-block;
-  min-width: 2.25em;
-  margin-right: 7px;
+  display: block;
+  -webkit-flex: 0 0 2.25em;
+  flex: 0 0 2.25em;
+  margin-right: 4px;
   color: #0066cc;
   color: -apple-system-link;
   font-style: italic;
   font-weight: 650;
 }
 
+.definition {
+  display: inline;
+}
+
+.semantic-content {
+  display: inline;
+}
+
+.english-definition {
+  display: block;
+  margin: 0 0 1px;
+  color: #5f6368;
+  color: -apple-system-secondary-label;
+  font-size: 0.84em;
+  line-height: 1.4;
+}
+
+.semantic-domain {
+  display: inline-block;
+  margin-right: 0.42em;
+  color: #77777c;
+  color: -apple-system-secondary-label;
+  font-size: 0.82em;
+  font-weight: 600;
+}
+
+.usage-note {
+  display: block;
+  margin-top: 2px;
+  color: #77777c;
+  color: -apple-system-secondary-label;
+  font-size: 0.8em;
+}
+
+.semantic-example {
+  display: block;
+  margin: 5px 0 2px;
+  padding-left: 0.65em;
+  border-left: 2px solid rgba(0, 102, 204, 0.18);
+  color: #5f6368;
+  color: -apple-system-secondary-label;
+  font-size: 0.83em;
+  line-height: 1.42;
+}
+
+.example-english,
+.example-chinese {
+  display: block;
+}
+
+.example-chinese {
+  margin-top: 1px;
+}
+
+.pos-definitions {
+  -webkit-flex: 1 1 auto;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.sense-number {
+  display: inline-block;
+  margin-right: 0.32em;
+  color: #5f6368;
+  color: -apple-system-secondary-label;
+  font-variant-numeric: tabular-nums;
+}
+
 .badges {
-  margin: 1px 0 8px;
+  display: inline-block;
+}
+
+.meta-badges {
+  display: inline-block;
+  margin: 0;
+}
+
+.study-meta {
+  margin: 8px 0 0 1.25em;
+  color: #5f6368;
+  color: -apple-system-secondary-label;
+  font-size: 0.74em;
+  line-height: 1.45;
+}
+
+.study-ranks {
+  display: inline-block;
+  margin: 0;
+}
+
+.frequency-text {
+  margin-left: 3px;
+  color: #6e6e73;
+  color: -apple-system-tertiary-label;
+  font-variant-numeric: tabular-nums;
+}
+
+.frequency-label {
+  color: #77777c;
+  color: -apple-system-secondary-label;
 }
 
 .badge {
@@ -65,20 +242,120 @@ h1 {
   background: rgba(0, 0, 0, 0.06);
   color: #4b4b50;
   color: -apple-system-secondary-label;
-  font-size: 0.78em;
+  font-size: 0.76em;
   font-weight: 600;
   line-height: 1.35;
 }
 
+.badge-exam {
+  margin-right: 4px;
+  padding: 1px 5px;
+  border-color: rgba(0, 102, 204, 0.14);
+  background: rgba(0, 102, 204, 0.055);
+  color: #3976a8;
+  font-size: 0.70em;
+}
+
+.badge-frequency {
+  font-variant-numeric: tabular-nums;
+}
+
+.inflections {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-items: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.inflections-title {
+  margin: 0 8px 4px 0;
+  color: #77777c;
+  font-size: 0.78em;
+  font-weight: 600;
+}
+
+.inflection {
+  display: inline-block;
+  margin: 0 6px 4px 0;
+  padding: 2px 7px;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.055);
+  color: inherit;
+  font-size: 0.82em;
+  line-height: 1.4;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 120ms ease;
+}
+
+.inflection:hover {
+  background: rgba(0, 0, 0, 0.11);
+}
+
+.inflection:active {
+  background: rgba(0, 0, 0, 0.17);
+}
+
+.inflection-kind {
+  margin-right: 5px;
+  color: #929297;
+  font-size: 0.9em;
+}
+
+.inflection-word {
+  color: #1d1d1f;
+  color: -apple-system-label;
+  font-weight: 600;
+}
+
+.exam-outline {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-items: center;
+  align-items: center;
+  margin-top: 8px;
+  color: #77777c;
+  color: -apple-system-secondary-label;
+  font-size: 0.78em;
+  line-height: 1.45;
+}
+
+.exam-title {
+  margin: 0 3px 0 0;
+  color: #77777c;
+  font-weight: 600;
+}
+
+.exam-list {
+  color: #7c7c82;
+  color: -apple-system-secondary-label;
+}
+
+.pronunciation:empty,
+.study-meta:empty,
+.inflections:empty,
+.exam-outline:empty {
+  display: none;
+}
+
 .meta {
-  margin-top: 7px;
-  padding-top: 6px;
-  border-top: 1px solid rgba(0, 0, 0, 0.14);
-  border-top-color: -apple-system-separator;
+  margin-top: 9px;
   color: #5f6368;
   color: -apple-system-secondary-label;
   font-size: 0.88em;
   font-weight: 500;
+}
+
+hr {
+  height: 0;
+  margin: 14px 0;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 span.column {
@@ -90,9 +367,20 @@ span.column {
 }
 
 @media (prefers-color-scheme: light) {
-  body, h1, .sense, .pronunciation {
+  body, h1, .sense {
     color: #1d1d1f !important;
     -webkit-text-fill-color: #1d1d1f !important;
+  }
+
+
+  .pronunciation {
+    color: #5f6368 !important;
+    -webkit-text-fill-color: #5f6368 !important;
+  }
+
+  .pronunciation-label {
+    color: #8e8e93 !important;
+    -webkit-text-fill-color: #8e8e93 !important;
   }
 
   .pos {
@@ -100,16 +388,51 @@ span.column {
     -webkit-text-fill-color: #0066cc !important;
   }
 
-  .meta, .badge {
+  .meta, .badge, .inflections-title, .inflection-kind, .exam-title, .study-meta, .sense-number, .english-definition, .semantic-domain, .usage-note, .semantic-example, .frequency-label {
     color: #5f6368 !important;
     -webkit-text-fill-color: #5f6368 !important;
+  }
+
+  .inflections-title, .exam-title {
+    color: #77777c !important;
+    -webkit-text-fill-color: #77777c !important;
+  }
+
+  .inflection-kind {
+    color: #929297 !important;
+    -webkit-text-fill-color: #929297 !important;
+  }
+
+
+  .inflection-word {
+    color: #1d1d1f !important;
+    -webkit-text-fill-color: #1d1d1f !important;
+  }
+
+
+  .badge-exam {
+    color: #3976a8 !important;
+    -webkit-text-fill-color: #3976a8 !important;
+    border-color: rgba(0, 102, 204, 0.14) !important;
+    background: rgba(0, 102, 204, 0.055) !important;
   }
 }
 
 @media (prefers-color-scheme: dark) {
-  body, h1, .sense, .pronunciation {
+  body, h1, .sense {
     color: #f5f5f7 !important;
     -webkit-text-fill-color: #f5f5f7 !important;
+  }
+
+
+  .pronunciation {
+    color: #d1d1d6 !important;
+    -webkit-text-fill-color: #d1d1d6 !important;
+  }
+
+  .pronunciation-label {
+    color: rgba(235, 235, 245, 0.55) !important;
+    -webkit-text-fill-color: rgba(235, 235, 245, 0.55) !important;
   }
 
   .pos {
@@ -117,29 +440,96 @@ span.column {
     -webkit-text-fill-color: #4aa3ff !important;
   }
 
-  .meta, .badge {
+  .meta, .badge, .inflections-title, .inflection-kind, .exam-title, .study-meta, .sense-number, .english-definition, .semantic-domain, .usage-note, .semantic-example, .frequency-label {
     color: #d1d1d6 !important;
     -webkit-text-fill-color: #d1d1d6 !important;
   }
 
-  .meta {
-    border-top-color: rgba(255, 255, 255, 0.2) !important;
+
+  .inflection {
+    background: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .inflection:hover {
+    background: rgba(255, 255, 255, 0.18) !important;
+  }
+
+  .inflection:active {
+    background: rgba(255, 255, 255, 0.25) !important;
+  }
+
+  .inflections-title, .exam-title {
+    color: rgba(235, 235, 245, 0.68) !important;
+    -webkit-text-fill-color: rgba(235, 235, 245, 0.68) !important;
+  }
+
+  .inflection-kind {
+    color: rgba(235, 235, 245, 0.72) !important;
+    -webkit-text-fill-color: rgba(235, 235, 245, 0.72) !important;
+  }
+
+  .inflection-word {
+    color: #f5f5f7 !important;
+    -webkit-text-fill-color: #f5f5f7 !important;
+  }
+
+  d|entry + d|entry,
+  hr {
+    border-top-color: rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .core-senses-divided {
+    border-bottom-color: rgba(255, 255, 255, 0.1) !important;
   }
 
   .badge {
     border-color: rgba(255, 255, 255, 0.18) !important;
     background: rgba(255, 255, 255, 0.1) !important;
   }
+
+
+  .badge-exam {
+    color: #7eaed5 !important;
+    -webkit-text-fill-color: #7eaed5 !important;
+    border-color: rgba(74, 163, 255, 0.18) !important;
+    background: rgba(74, 163, 255, 0.07) !important;
+  }
 }
 
 /* Quick Lookup may not expose its appearance through the media query. */
 html.apple_client-panel body,
 html.apple_client-panel h1,
-html.apple_client-panel .sense,
-html.apple_client-panel .pronunciation {
+html.apple_client-panel .sense {
   color: -apple-system-label !important;
   -webkit-text-fill-color: -apple-system-label !important;
   opacity: 1 !important;
+}
+
+/* Keep the compact three-finger Lookup panel from losing horizontal space. */
+html.apple_client-panel body {
+  padding-top: 0;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+/* No priority filtering: native More must be able to expand every detail. */
+html.apple_client-panel .core-senses > .pos-group { order: 0 !important; }
+html.apple_client-panel .core-senses > .pos-continuation { order: 1 !important; }
+html.apple_client-panel .continuation-pos { visibility: visible; }
+html.apple_client-panel .core-senses > .loose-sense {
+  order: 2 !important;
+}
+
+
+html.apple_client-panel .pronunciation {
+  color: -apple-system-secondary-label !important;
+  -webkit-text-fill-color: -apple-system-secondary-label !important;
+  opacity: 1 !important;
+}
+
+html.apple_client-panel .pronunciation-label {
+  color: -apple-system-tertiary-label !important;
+  -webkit-text-fill-color: -apple-system-tertiary-label !important;
 }
 
 html.apple_client-panel .pos {
@@ -148,8 +538,53 @@ html.apple_client-panel .pos {
 }
 
 html.apple_client-panel .meta,
-html.apple_client-panel .badge {
+html.apple_client-panel .badge,
+html.apple_client-panel .inflections-title,
+html.apple_client-panel .inflection-kind,
+html.apple_client-panel .exam-title,
+html.apple_client-panel .study-meta,
+html.apple_client-panel .sense-number,
+html.apple_client-panel .english-definition,
+html.apple_client-panel .semantic-domain,
+html.apple_client-panel .usage-note,
+html.apple_client-panel .semantic-example,
+html.apple_client-panel .frequency-label {
   color: -apple-system-secondary-label !important;
   -webkit-text-fill-color: -apple-system-secondary-label !important;
   opacity: 1 !important;
+}
+
+html.apple_client-panel .inflections-title,
+html.apple_client-panel .exam-title,
+html.apple_client-panel .inflection-kind {
+  color: #a4a4aa !important;
+  -webkit-text-fill-color: #a4a4aa !important;
+}
+
+html.apple_client-panel .inflection:hover {
+  background: rgba(128, 128, 128, 0.22) !important;
+}
+
+html.apple_client-panel .inflection:active {
+  background: rgba(128, 128, 128, 0.32) !important;
+}
+
+
+html.apple_client-panel .inflection-word {
+  color: -apple-system-label !important;
+  -webkit-text-fill-color: -apple-system-label !important;
+}
+
+html.apple_client-panel .study-meta {
+  margin-left: 1.25em;
+}
+
+
+html.apple_client-panel d|entry + d|entry,
+html.apple_client-panel hr {
+  border-top-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html.apple_client-panel .core-senses-divided {
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
 }

@@ -1,0 +1,73 @@
+{
+  "schema_version": "2.0",
+  "word": "break",
+  "pronunciation": [],
+  "senses": [
+    {
+      "sense_id": "damage",
+      "pos": "vt.",
+      "sense_number": 1,
+      "english_definition": "to damage something so it separates into pieces",
+      "chinese_definition": "打破；弄碎",
+      "domain": null,
+      "learning_priority": "most_common",
+      "confidence": 0.85,
+      "source_entry_ids": [
+        "0000000000000000000000000000000000000000000000000000000000000000:1"
+      ],
+      "examples": [],
+      "usage_notes": []
+    },
+    {
+      "sense_id": "pause",
+      "pos": "n.",
+      "sense_number": 1,
+      "english_definition": "a short period when an activity stops",
+      "chinese_definition": "休息；暂停",
+      "domain": null,
+      "learning_priority": "most_common",
+      "confidence": 0.85,
+      "source_entry_ids": [
+        "0000000000000000000000000000000000000000000000000000000000000000:1"
+      ],
+      "examples": [],
+      "usage_notes": []
+    },
+    {
+      "sense_id": "violate",
+      "pos": "vt.",
+      "sense_number": 2,
+      "english_definition": "to fail to follow a rule or promise",
+      "chinese_definition": "违反；违背",
+      "domain": null,
+      "learning_priority": "most_common",
+      "confidence": 0.85,
+      "source_entry_ids": [
+        "0000000000000000000000000000000000000000000000000000000000000000:1"
+      ],
+      "examples": [],
+      "usage_notes": []
+    }
+  ],
+  "morphology": [],
+  "exam_tags": [],
+  "frequency": {
+    "bnc": null,
+    "coca": null,
+    "frq": null,
+    "collins": null,
+    "oxford_3000": null
+  },
+  "provenance": {
+    "source": "design_example",
+    "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "raw_entry_ids": [
+      "0000000000000000000000000000000000000000000000000000000000000000:1"
+    ],
+    "ecdict_version": "illustrative-not-source-verified",
+    "generator": "phase2-design-fixture",
+    "generator_version": "1",
+    "prompt_version": null,
+    "generated_at": "2026-09-12T00:00:00Z"
+  }
+}

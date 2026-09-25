@@ -7,3 +7,8 @@ dist/
 *.mdx
 objects/
 ECDICT-styled.xml
+semantic_cleanup/work/
+semantic_cleanup/*.sqlite
+semantic_cleanup/*.sqlite-*
+baseline/artifacts/*
+!baseline/artifacts/README.md

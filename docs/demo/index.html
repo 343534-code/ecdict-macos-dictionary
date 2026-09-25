@@ -1,0 +1,622 @@
+<!doctype html><html lang="zh-CN" class="apple_client-panel"><head><meta charset="utf-8">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script><style>@charset "UTF-8";
+@namespace d url(http://www.apple.com/DTDs/DictionaryService-1.0.rng);
+
+html {
+  color-scheme: light dark;
+}
+
+body {
+  margin: 0;
+  padding: 12px 7% 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Helvetica Neue", sans-serif;
+  font-size: 100%;
+  line-height: 1.55;
+  color: #1d1d1f;
+  color: -apple-system-label;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+d|entry {
+  display: block;
+  padding: 2px 0 12px;
+}
+
+d|entry + d|entry {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.entry-header {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-items: center;
+  align-items: center;
+  gap: 6px 8px;
+  margin: 0 0 7px;
+}
+
+h1 {
+  max-width: 100%;
+  margin: 0;
+  color: #1d1d1f;
+  color: -apple-system-label;
+  font-size: 1.5em;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.pronunciation {
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: 2px 12px;
+  max-width: 100%;
+  margin: 0;
+  color: #5f6368;
+  color: -apple-system-secondary-label;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.88em;
+  font-weight: 500;
+  opacity: 1;
+}
+
+.pronunciation-variant {
+  white-space: nowrap;
+}
+
+.pronunciation-label {
+  margin-right: 4px;
+  color: #8e8e93;
+  color: -apple-system-tertiary-label;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", sans-serif;
+  font-size: 0.78em;
+  font-weight: 600;
+}
+
+.sense {
+  margin: 3px 0;
+  color: #1d1d1f;
+  color: -apple-system-label;
+  line-height: 1.45;
+}
+
+/* Visually nest definition details below the headword row. */
+.core-senses,
+.entry-details > .inflections,
+.entry-details > .exam-outline,
+.entry-details > .meta,
+.entry-header ~ .inflections,
+.entry-header ~ .exam-outline,
+.entry-header ~ .meta {
+  margin-left: 1.25em;
+}
+
+.core-senses {
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.continuation-pos { visibility: hidden; }
+
+.core-senses-divided {
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.pos-group {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+  margin: 3px 0;
+}
+
+.pos {
+  display: block;
+  -webkit-flex: 0 0 2.25em;
+  flex: 0 0 2.25em;
+  margin-right: 4px;
+  color: #0066cc;
+  color: -apple-system-link;
+  font-style: italic;
+  font-weight: 650;
+}
+
+.definition {
+  display: inline;
+}
+
+.semantic-content {
+  display: inline;
+}
+
+.english-definition {
+  display: block;
+  margin: 0 0 1px;
+  color: #5f6368;
+  color: -apple-system-secondary-label;
+  font-size: 0.84em;
+  line-height: 1.4;
+}
+
+.semantic-domain {
+  display: inline-block;
+  margin-right: 0.42em;
+  color: #77777c;
+  color: -apple-system-secondary-label;
+  font-size: 0.82em;
+  font-weight: 600;
+}
+
+.usage-note {
+  display: block;
+  margin-top: 2px;
+  color: #77777c;
+  color: -apple-system-secondary-label;
+  font-size: 0.8em;
+}
+
+.semantic-example {
+  display: block;
+  margin: 5px 0 2px;
+  padding-left: 0.65em;
+  border-left: 2px solid rgba(0, 102, 204, 0.18);
+  color: #5f6368;
+  color: -apple-system-secondary-label;
+  font-size: 0.83em;
+  line-height: 1.42;
+}
+
+.example-english,
+.example-chinese {
+  display: block;
+}
+
+.example-chinese {
+  margin-top: 1px;
+}
+
+.pos-definitions {
+  -webkit-flex: 1 1 auto;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.sense-number {
+  display: inline-block;
+  margin-right: 0.32em;
+  color: #5f6368;
+  color: -apple-system-secondary-label;
+  font-variant-numeric: tabular-nums;
+}
+
+.badges {
+  display: inline-block;
+}
+
+.meta-badges {
+  display: inline-block;
+  margin: 0;
+}
+
+.study-meta {
+  margin: 8px 0 0 1.25em;
+  color: #5f6368;
+  color: -apple-system-secondary-label;
+  font-size: 0.74em;
+  line-height: 1.45;
+}
+
+.study-ranks {
+  display: inline-block;
+  margin: 0;
+}
+
+.frequency-text {
+  margin-left: 3px;
+  color: #6e6e73;
+  color: -apple-system-tertiary-label;
+  font-variant-numeric: tabular-nums;
+}
+
+.frequency-label {
+  color: #77777c;
+  color: -apple-system-secondary-label;
+}
+
+.badge {
+  display: inline-block;
+  margin: 0 6px 3px 0;
+  padding: 1px 7px 2px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.06);
+  color: #4b4b50;
+  color: -apple-system-secondary-label;
+  font-size: 0.76em;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.badge-exam {
+  margin-right: 4px;
+  padding: 1px 5px;
+  border-color: rgba(0, 102, 204, 0.14);
+  background: rgba(0, 102, 204, 0.055);
+  color: #3976a8;
+  font-size: 0.70em;
+}
+
+.badge-frequency {
+  font-variant-numeric: tabular-nums;
+}
+
+.inflections {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-items: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.inflections-title {
+  margin: 0 8px 4px 0;
+  color: #77777c;
+  font-size: 0.78em;
+  font-weight: 600;
+}
+
+.inflection {
+  display: inline-block;
+  margin: 0 6px 4px 0;
+  padding: 2px 7px;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.055);
+  color: inherit;
+  font-size: 0.82em;
+  line-height: 1.4;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 120ms ease;
+}
+
+.inflection:hover {
+  background: rgba(0, 0, 0, 0.11);
+}
+
+.inflection:active {
+  background: rgba(0, 0, 0, 0.17);
+}
+
+.inflection-kind {
+  margin-right: 5px;
+  color: #929297;
+  font-size: 0.9em;
+}
+
+.inflection-word {
+  color: #1d1d1f;
+  color: -apple-system-label;
+  font-weight: 600;
+}
+
+.exam-outline {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-items: center;
+  align-items: center;
+  margin-top: 8px;
+  color: #77777c;
+  color: -apple-system-secondary-label;
+  font-size: 0.78em;
+  line-height: 1.45;
+}
+
+.exam-title {
+  margin: 0 3px 0 0;
+  color: #77777c;
+  font-weight: 600;
+}
+
+.exam-list {
+  color: #7c7c82;
+  color: -apple-system-secondary-label;
+}
+
+.pronunciation:empty,
+.study-meta:empty,
+.inflections:empty,
+.exam-outline:empty {
+  display: none;
+}
+
+.meta {
+  margin-top: 9px;
+  color: #5f6368;
+  color: -apple-system-secondary-label;
+  font-size: 0.88em;
+  font-weight: 500;
+}
+
+hr {
+  height: 0;
+  margin: 14px 0;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+span.column {
+  display: block;
+  margin: 0.5em 2em;
+  padding: 0.5em;
+  border: 1px solid rgba(128, 128, 128, 0.45);
+  border-radius: 6px;
+}
+
+@media (prefers-color-scheme: light) {
+  body, h1, .sense {
+    color: #1d1d1f !important;
+    -webkit-text-fill-color: #1d1d1f !important;
+  }
+
+
+  .pronunciation {
+    color: #5f6368 !important;
+    -webkit-text-fill-color: #5f6368 !important;
+  }
+
+  .pronunciation-label {
+    color: #8e8e93 !important;
+    -webkit-text-fill-color: #8e8e93 !important;
+  }
+
+  .pos {
+    color: #0066cc !important;
+    -webkit-text-fill-color: #0066cc !important;
+  }
+
+  .meta, .badge, .inflections-title, .inflection-kind, .exam-title, .study-meta, .sense-number, .english-definition, .semantic-domain, .usage-note, .semantic-example, .frequency-label {
+    color: #5f6368 !important;
+    -webkit-text-fill-color: #5f6368 !important;
+  }
+
+  .inflections-title, .exam-title {
+    color: #77777c !important;
+    -webkit-text-fill-color: #77777c !important;
+  }
+
+  .inflection-kind {
+    color: #929297 !important;
+    -webkit-text-fill-color: #929297 !important;
+  }
+
+
+  .inflection-word {
+    color: #1d1d1f !important;
+    -webkit-text-fill-color: #1d1d1f !important;
+  }
+
+
+  .badge-exam {
+    color: #3976a8 !important;
+    -webkit-text-fill-color: #3976a8 !important;
+    border-color: rgba(0, 102, 204, 0.14) !important;
+    background: rgba(0, 102, 204, 0.055) !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body, h1, .sense {
+    color: #f5f5f7 !important;
+    -webkit-text-fill-color: #f5f5f7 !important;
+  }
+
+
+  .pronunciation {
+    color: #d1d1d6 !important;
+    -webkit-text-fill-color: #d1d1d6 !important;
+  }
+
+  .pronunciation-label {
+    color: rgba(235, 235, 245, 0.55) !important;
+    -webkit-text-fill-color: rgba(235, 235, 245, 0.55) !important;
+  }
+
+  .pos {
+    color: #4aa3ff !important;
+    -webkit-text-fill-color: #4aa3ff !important;
+  }
+
+  .meta, .badge, .inflections-title, .inflection-kind, .exam-title, .study-meta, .sense-number, .english-definition, .semantic-domain, .usage-note, .semantic-example, .frequency-label {
+    color: #d1d1d6 !important;
+    -webkit-text-fill-color: #d1d1d6 !important;
+  }
+
+
+  .inflection {
+    background: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .inflection:hover {
+    background: rgba(255, 255, 255, 0.18) !important;
+  }
+
+  .inflection:active {
+    background: rgba(255, 255, 255, 0.25) !important;
+  }
+
+  .inflections-title, .exam-title {
+    color: rgba(235, 235, 245, 0.68) !important;
+    -webkit-text-fill-color: rgba(235, 235, 245, 0.68) !important;
+  }
+
+  .inflection-kind {
+    color: rgba(235, 235, 245, 0.72) !important;
+    -webkit-text-fill-color: rgba(235, 235, 245, 0.72) !important;
+  }
+
+  .inflection-word {
+    color: #f5f5f7 !important;
+    -webkit-text-fill-color: #f5f5f7 !important;
+  }
+
+  d|entry + d|entry,
+  hr {
+    border-top-color: rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .core-senses-divided {
+    border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .badge {
+    border-color: rgba(255, 255, 255, 0.18) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+  }
+
+
+  .badge-exam {
+    color: #7eaed5 !important;
+    -webkit-text-fill-color: #7eaed5 !important;
+    border-color: rgba(74, 163, 255, 0.18) !important;
+    background: rgba(74, 163, 255, 0.07) !important;
+  }
+}
+
+/* Quick Lookup may not expose its appearance through the media query. */
+html.apple_client-panel body,
+html.apple_client-panel h1,
+html.apple_client-panel .sense {
+  color: -apple-system-label !important;
+  -webkit-text-fill-color: -apple-system-label !important;
+  opacity: 1;
+}
+
+/* Keep the compact three-finger Lookup panel from losing horizontal space. */
+html.apple_client-panel body {
+  padding-top: 0;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+/* No priority filtering: native More must be able to expand every detail. */
+html.apple_client-panel .core-senses > .pos-group { order: 0 !important; }
+html.apple_client-panel .core-senses > .pos-continuation { order: 1 !important; }
+html.apple_client-panel .continuation-pos { visibility: visible; }
+html.apple_client-panel .core-senses > .loose-sense {
+  order: 2 !important;
+}
+
+
+html.apple_client-panel .pronunciation {
+  color: -apple-system-secondary-label !important;
+  -webkit-text-fill-color: -apple-system-secondary-label !important;
+  opacity: 1;
+}
+
+html.apple_client-panel .pronunciation-label {
+  color: -apple-system-tertiary-label !important;
+  -webkit-text-fill-color: -apple-system-tertiary-label !important;
+}
+
+html.apple_client-panel .pos {
+  color: -apple-system-link !important;
+  -webkit-text-fill-color: -apple-system-link !important;
+}
+
+html.apple_client-panel .meta,
+html.apple_client-panel .badge,
+html.apple_client-panel .inflections-title,
+html.apple_client-panel .inflection-kind,
+html.apple_client-panel .exam-title,
+html.apple_client-panel .study-meta,
+html.apple_client-panel .sense-number,
+html.apple_client-panel .english-definition,
+html.apple_client-panel .semantic-domain,
+html.apple_client-panel .usage-note,
+html.apple_client-panel .semantic-example,
+html.apple_client-panel .frequency-label {
+  color: -apple-system-secondary-label !important;
+  -webkit-text-fill-color: -apple-system-secondary-label !important;
+  opacity: 1;
+}
+
+html.apple_client-panel .inflections-title,
+html.apple_client-panel .exam-title,
+html.apple_client-panel .inflection-kind {
+  color: #a4a4aa !important;
+  -webkit-text-fill-color: #a4a4aa !important;
+}
+
+html.apple_client-panel .inflection:hover {
+  background: rgba(128, 128, 128, 0.22) !important;
+}
+
+html.apple_client-panel .inflection:active {
+  background: rgba(128, 128, 128, 0.32) !important;
+}
+
+
+html.apple_client-panel .inflection-word {
+  color: -apple-system-label !important;
+  -webkit-text-fill-color: -apple-system-label !important;
+}
+
+html.apple_client-panel .study-meta {
+  margin-left: 1.25em;
+}
+
+
+html.apple_client-panel d|entry + d|entry,
+html.apple_client-panel hr {
+  border-top-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html.apple_client-panel .core-senses-divided {
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+@font-face{font-family:'PingFang SC';src:local('PingFang SC')}@font-face{font-family:'SFMono-Regular';src:local('SFMono-Regular')}
+*{box-sizing:border-box}html,body{width:960px;height:800px;margin:0;padding:0!important;background:#202124;color:#f2f2f7;overflow:hidden}
+#root{width:960px;height:800px}.scene-content{width:100%;height:100%;padding:30px 44px;display:flex;flex-direction:column;gap:18px}
+.caption{font:22px -apple-system,'PingFang SC',sans-serif;color:#b9bac2;margin:0}.caption strong{color:#f2f2f7}
+.panel{padding:24px 30px 30px;border:1px solid #62646b;border-radius:24px;background:#303134;overflow:hidden;font-size:25px}
+.brand{font-size:30px;font-weight:600;margin:0 0 22px;color:#f2f2f7}
+.entry-header h1{font-size:42px}.badge{font-size:18px!important}.sense{font-size:24px;line-height:1.45}.core-senses{margin-left:0}
+.pronunciation,.meta,.badge,.inflections-title,.inflection-kind,.exam-title,.study-meta,.sense-number{color:#b9bac2!important;-webkit-text-fill-color:#b9bac2!important}
+.pos,.inflection-word{color:#69b5ff!important;-webkit-text-fill-color:#69b5ff!important}.definition,h1,.sense{color:#f2f2f7!important;-webkit-text-fill-color:#f2f2f7!important}
+.inflections,.exam-outline,.study-meta{margin-left:0!important;font-size:20px}.inflections-title,.inflection-kind,.exam-title{font-size:18px!important}
+.badge{background:#414349!important;border-color:#6b6d74!important}.more{font-size:23px;color:#69b5ff;margin:0 0 0 auto}.footer{font-size:18px;color:#b9bac2;margin:0}
+html.apple_client-panel .caption,html.apple_client-panel .footer{color:#b9bac2!important;-webkit-text-fill-color:#b9bac2!important}
+html.apple_client-panel .caption strong,html.apple_client-panel .brand{color:#f2f2f7!important;-webkit-text-fill-color:#f2f2f7!important}
+html.apple_client-panel .more{color:#69b5ff!important;-webkit-text-fill-color:#69b5ff!important}
+html.apple_client-panel .panel .entry-details span{color:#c8c9d0!important;-webkit-text-fill-color:#c8c9d0!important;opacity:1!important}
+</style></head><body><div id="root" data-composition-id="main" data-start="0" data-duration="9" data-width="960" data-height="800">
+<div class="scene-content"><p class="caption"><strong>三指查询 Demo</strong> · 界面示意动画，非系统录屏</p>
+<div class="panel"><p class="brand">ECDICT 简明英汉字典</p><div class="entry-header"><h1>release</h1><h3 class="pronunciation"><span class="pronunciation-variant"><span class="ipa">/rɪˈliːs/</span></span></h3><span class="badges study-ranks"><span class="badge badge-rank">Oxford 3000</span><span class="badge badge-rank">Collins 5★</span></span></div><div class="core-senses core-senses-divided"><div class="pos-group" style="order:0"><span class="pos">n.</span><div class="pos-definitions"><div class="sense"><span class="sense-number">①</span><span class="definition">释放；发泄；豁免；发行；释放证书</span></div></div></div><div class="pos-group" style="order:2"><span class="pos">vt.</span><div class="pos-definitions"><div class="sense"><span class="definition">释放；解除；放松；豁免；免除；发布；放弃；让与</span></div></div></div><div class="pos-group pos-continuation" style="order:1"><span class="pos continuation-pos">n.</span><div class="pos-definitions"><div class="sense"><span class="sense-number">②</span><span class="definition">发布</span></div></div></div><div class="sense loose-sense" style="order:3">[计算机] 版本；发布</div></div><div class="entry-details"><div class="inflections"><span class="inflections-title">词形变化</span><a class="inflection" href="x-dictionary:d:released"><span class="inflection-kind">过去式 / 过去分词</span><span class="inflection-word">released</span></a><a class="inflection" href="x-dictionary:d:releasing"><span class="inflection-kind">现在分词</span><span class="inflection-word">releasing</span></a><a class="inflection" href="x-dictionary:d:releases"><span class="inflection-kind">第三人称单数</span><span class="inflection-word">releases</span></a></div><div class="exam-outline"><span class="exam-title">考试：</span><span class="exam-list">考研 · CET4 · CET6 · TOEFL · IELTS · GRE</span></div><div class="study-meta"><span class="frequency-text">BNC #1120 · COCA #1232</span></div></div></div>
+<p class="more">点击「更多」展开详情 ↓</p><p class="footer">首屏看释义 · 展开看词形、考试标签与词频</p></div></div>
+<script>window.__timelines=window.__timelines||{};const tl=gsap.timeline({paused:true});
+tl.from('.caption',{opacity:0,x:-8,duration:.4,ease:'power2.out'},.1)
+.from('.panel',{opacity:0,scale:.985,duration:.55,ease:'power3.out'},.2)
+.from('.brand',{opacity:0,duration:.3,ease:'sine.out'},.3)
+.from('.entry-header',{opacity:0,y:5,duration:.35,ease:'power2.out'},.4)
+.from('.pos-group:not(.pos-continuation)',{opacity:0,duration:.3,stagger:.1,ease:'sine.out'},.55)
+.from('.more',{opacity:0,duration:.35,ease:'power3.out'},1.0)
+.from('.footer',{opacity:0,duration:.5,ease:'sine.out'},.5)
+.from('.pos-continuation,.loose-sense,.entry-details',{opacity:0,y:6,duration:.5,stagger:.08,ease:'power3.out'},3.8)
+.to('.more',{opacity:0,duration:.25,ease:'power2.in'},3.6);
+window.__timelines.main=tl;</script></body></html>

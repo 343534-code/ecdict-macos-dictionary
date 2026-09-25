@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "chinese_separator": "；",
+  "subject_labels": {
+    "计": "计算机",
+    "医": "医学",
+    "法": "法律",
+    "经": "经济",
+    "化": "化学",
+    "物": "物理"
+  },
+  "priority": {
+    "bnc_core_max": 5000,
+    "coca_core_max": 5000,
+    "minimum_collins_stars": 3,
+    "include_oxford_3000": true,
+    "include_exam_tagged": true
+  },
+  "limits": {
+    "max_senses_per_pos": 5,
+    "max_english_definition_characters": 180,
+    "max_chinese_definition_characters": 72,
+    "max_examples_per_entry": 1,
+    "max_usage_notes_per_sense": 2
+  },
+  "ordering": [
+    "most_common",
+    "exam_common",
+    "specialist"
+  ]
+}

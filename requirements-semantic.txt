@@ -1,0 +1,2 @@
+# Phase 2 candidate validation only; legacy exporter does not require this.
+jsonschema==4.25.0

@@ -6,9 +6,16 @@
 
 **把约 340 万条 ECDICT 英汉词条带入 macOS 原生查词体验。**
 
+![三指查询 Demo：精简首屏，点击更多展开完整详情（界面示意动画，非系统录屏）](docs/images/lookup-demo-v121.gif)
+
+> **界面示意动画，非系统录屏。** 演示 v1.2.1 的“首屏看释义 → 点击更多看详情”。具体高度、字号与展开方式由 macOS 和查询应用决定。[查看最新查询页面](docs/lookup-preview.md)。
+
 这是一款为 Apple 自带“词典”应用制作的大规模离线英汉词典。安装后无需打开浏览器，即可在 Dictionary.app、右键“查询”和触控板三指轻点中查看音标、词性与中文释义。数据保存在本机，不需联网、账号或常驻进程。
 
 [下载最新版](https://github.com/343534-code/ecdict-macos-dictionary/releases/latest) · [安装指南](#macos-安装流程) · [常见问题](#常见问题) · [从源码构建](#从源码构建)
+
+> [!NOTE]
+> 项目正在建设面向英语学习者的语义重构层：它会在不改写 ECDICT 原始数据的前提下，为经过审核的高价值词条提供按英文语义重新组织的释义、简短英文解释和至多一条例句。当前 Release 仍以稳定的原始数据渲染为主；详见[语义重构架构](docs/semantic-architecture.md)。
 
 > [!IMPORTANT]
 > 首次启用时，除了勾选“ECDICT 简明英汉字典”，还需在“词典”设置中至少勾选一个 macOS 系统自带词典。在部分 macOS 版本上，只启用第三方词典可能无法正常显示查询结果。
@@ -39,17 +46,21 @@ ECDICT macOS Dictionary 基于 [skywind3000/ECDICT](https://github.com/skywind30
 | --- | --- |
 | 词典数据 | ECDICT 1.0.28，约 340 万条词条 |
 | 查询方式 | Dictionary.app、三指轻点、右键“查询”及部分系统文本服务 |
-| 词条内容 | 词头、音标、词性、中文释义、词频与考试标签 |
+| 词条内容 | 词头、音标、词性、中文释义、可点击词形变化、考试标签与 BNC/COCA 词频 |
 | 运行方式 | 完全离线，无账号、无广告、无常驻进程 |
 | 其他格式 | 同时提供 MDX，可导入欧路词典、GoldenDict 和 MDict 等软件 |
 
 ## 实际查询效果
 
+**v1.2.1：** 快速查询首屏优先展示各词性的第一条原始释义；点击系统“更多”后，继续查看剩余释义、专业标签、词形变化、考试大纲与词频。完整 Dictionary.app 页面仍按词性组织释义。这是排版与展开改进，不代表全库已进行 AI 语义重构。
+
+以下为历史 v1.2.0 截图对照，最新布局见[查询页面](docs/lookup-preview.md)。
+
 | ECDICT | macOS 系统自带词典 |
 | --- | --- |
-| ![ECDICT v1.1.0 查询 two 的实际效果](docs/images/dictionary-app-two-v110.jpg) | ![macOS 系统自带词典查询 two 的效果](docs/images/apple-dictionary-two.jpg) |
+| ![ECDICT v1.2.0 查询 take 的实际效果](docs/images/dictionary-app-take-v120.jpg) | ![macOS 系统自带词典查询 take 的效果](docs/images/apple-dictionary-take.jpg) |
 
-> ECDICT 截图来自 v1.1.0 在 macOS“词典”App 中查询 `two` 的实际运行画面，没有使用模拟或生成界面。正式 Release 的词典名称不含“候选版”。
+> 两张截图均来自同一台 Mac 上的实际 Dictionary.app 查询，没有使用模拟或生成界面。ECDICT v1.2.0 在紧凑布局中直接展示评级、词形变化、考试大纲与词频排名。
 
 安装后可通过以下入口查词：
 
@@ -62,15 +73,27 @@ ECDICT macOS Dictionary 基于 [skywind3000/ECDICT](https://github.com/skywind30
 ### 主要特点
 
 - 收录单词、变形、短语、专有名词和大量扩展词目；
-- 独立显示词头、音标、词性、中文释义和词频/考试标签；
+- 词头、音标和 Oxford/Collins 评级同行排版，减少三指查询中的纵向占用；
+- Oxford/Collins 保留轻量评级徽章，考试大纲与 BNC/COCA 词频以次要文本展示；
+- 词性使用固定宽度，多行释义严格对齐；
+- 动词的过去式、过去分词、现在分词和第三人称单数使用带名称的词形标签排版；
 - 采用适配 macOS 深色外观和快速查询面板的结构化样式；
 - 词典数据完全保存在本机，不收集使用数据；
 - 提供转换脚本和构建配置，便于审查、修改和复现。
 
+### 徽章怎么看
+
+- `Oxford 3000` 表示该词属于牛津 3000 核心词汇；
+- `Collins 1★–5★` 表示柯林斯词频星级，星数越高通常越常用；
+- `中考`、`高考`、`CET4` 等标签表示 ECDICT 原数据收录的考试大纲标记；
+- `BNC #80` 和 `COCA #60` 是该词在英国国家语料库与美国当代英语语料库中的词频排名，数字越小表示越常见。
+
+> 标签忠实反映原数据：例如 `(中高 80/60)` 只包含“中考”、“高考”和两个词频排名，不会凭空增加 CET4。
+
 ## 系统要求
 
 - macOS 10.11 或更高版本（构建目标；未逐一验证所有历史版本）；
-- 约 500 MB 可用磁盘空间；
+- 安装后约占 424 MiB；建议预留至少 1.5 GB 空间用于下载、解压与旧版备份；
 - 一行命令和 ZIP 安装不需要管理员密码；PKG 系统级安装需要管理员密码。
 
 ## 下载文件说明
@@ -79,20 +102,15 @@ ECDICT macOS Dictionary 基于 [skywind3000/ECDICT](https://github.com/skywind30
 
 | 文件 | 用途 |
 | --- | --- |
-| `ECDICT-macOS-Dictionary-v1.1.1.zip` | 用户级 ZIP 安装包，无需管理员密码（推荐） |
-| `ECDICT-macOS-Dictionary-v1.1.1.pkg` | 系统级图形化安装包，需要管理员密码（未签名） |
+| `ECDICT-macOS-Dictionary-v1.2.1.zip` | 用户级 ZIP 安装包，无需管理员密码（推荐） |
+| `ECDICT-macOS-Dictionary-v1.2.1.pkg` | 系统级图形化安装包，需要管理员密码（未签名、未公证） |
 | `ECDICT-MDX-1.0.28.mdx` | 上游官方 MDX，适用于欧路词典、GoldenDict、MDict 等 |
 | `install.sh` | 一行命令使用的开源安装脚本 |
 | `SHA256SUMS.txt` | Release 附件的 SHA-256 校验值 |
 
 ### SHA-256 校验值
 
-```text
-c226933719eb01183e1fd3d12ec3bbc1aa91a66660914b3745c66486add333bc  ECDICT-macOS-Dictionary-v1.1.1.zip
-6c22083484d51a34160111da384d46766b61b00ccec18c5162d2fc91f79e7a6a  ECDICT-macOS-Dictionary-v1.1.1.pkg
-275e71b58fd359bfe649af1cbee533ea81770bdbc53ec4a34567f84720a5751b  ECDICT-MDX-1.0.28.mdx
-5ed6c6cffd137ee2667b3ac062f15f70e6d931083e6b95c7f426a74f2d3efe8b  install.sh
-```
+请下载同一 Release 的 `SHA256SUMS.txt`，在下载目录运行 `shasum -a 256 -c SHA256SUMS.txt`。仅下载部分附件时，未下载文件会提示找不到；核对你实际下载文件的结果即可。
 
 ## macOS 安装流程
 
@@ -114,9 +132,11 @@ curl -fsSL https://github.com/343534-code/ecdict-macos-dictionary/releases/lates
 
 脚本会自动完成下载、SHA-256 校验、旧版备份和用户级安装。完成后仍需打开“词典”→“设置…”，勾选 ECDICT 和至少一个系统自带词典。
 
+> 如果以前通过 PKG 安装过系统级版本，脚本会检测 `/Library/Dictionaries/` 中的旧副本并停止，以免系统级旧版遮蔽用户级新版。此时请直接下载最新 PKG 覆盖更新。
+
 ### 方法二：通过访达安装
 
-1. 下载 `ECDICT-macOS-Dictionary-v1.1.1.zip`。
+1. 下载 `ECDICT-macOS-Dictionary-v1.2.1.zip`。
 2. 双击 ZIP 文件解压，得到 `ECDICT 简明英汉字典.dictionary`。
 3. 完全退出 macOS“词典”应用（按 `Command-Q`）。
 4. 在访达菜单中选择“前往”→“前往文件夹…”。
@@ -131,7 +151,7 @@ curl -fsSL https://github.com/343534-code/ecdict-macos-dictionary/releases/lates
 
 ### 方法三：通过 PKG 图形化安装
 
-1. 从 Releases 下载 `ECDICT-macOS-Dictionary-v1.1.1.pkg`。
+1. 从 Releases 下载 `ECDICT-macOS-Dictionary-v1.2.1.pkg`。
 2. 双击安装包，并按提示输入管理员密码。
 3. 安装包会把词典放入系统级 `/Library/Dictionaries/`，供这台 Mac 的用户使用。
 4. 打开“词典”→“设置…”，勾选 ECDICT，并同时勾选至少一个系统自带词典。
@@ -147,7 +167,8 @@ curl -fsSL https://github.com/343534-code/ecdict-macos-dictionary/releases/lates
 mkdir -p "$HOME/Library/Dictionaries"
 ditto "ECDICT 简明英汉字典.dictionary" \
   "$HOME/Library/Dictionaries/ECDICT 简明英汉字典.dictionary"
-killall Dictionary DictionaryServiceHelper 2>/dev/null || true
+killall -9 LookupViewService com.apple.DictionaryServiceHelper 2>/dev/null || true
+killall Dictionary 2>/dev/null || true
 ```
 
 随后打开“词典”→“设置…”，勾选该词典，并**同时勾选至少一个系统自带词典**。再次完全退出并重新打开“词典”，搜索 `two` 测试。
@@ -173,12 +194,14 @@ killall Dictionary DictionaryServiceHelper 2>/dev/null || true
 
 ## 更新版本
 
-1. 退出“词典”应用。
-2. 删除或移走 `~/Library/Dictionaries/` 中的旧版本。
-3. 将新版 `.dictionary` 文件夹复制到该目录。
-4. 重新打开“词典”并确认新版已勾选。
+1. 先确认旧版的安装位置：ZIP/一行命令通常在 `~/Library/Dictionaries/`，PKG 在 `/Library/Dictionaries/`。
+2. 用与旧版相同的方式更新：用户级版可再次运行一行命令；系统级版请运行新 PKG。
+3. 完全退出并重新打开“词典”，确认 ECDICT 已勾选。
+4. 查询 `release`，点击“更多”，确认能看到第二条名词释义、词形变化、考试标签与 BNC/COCA 词频。
 
+如果三指查询仍显示旧版页面，请先保存工作，完全退出并重新打开**发起查询的应用**（例如浏览器或文本编辑）。仅重启“词典”或查询服务不一定能刷新该应用持有的旧索引。必要时注销后重新登录；不要直接删除整个系统缓存目录。
 如果同名旧版仍被缓存，可先将旧版取消勾选，退出“词典”，再安装新版。
+如果同时存在 `/Library/Dictionaries/` 和 `~/Library/Dictionaries/` 两个同名副本，Dictionary.app 可能优先显示系统级副本；请只保留一个正式版本。
 
 ## 卸载
 
@@ -219,7 +242,7 @@ macOS 的三指查询浮窗会过滤或覆盖第三方词典的部分 CSS。Dict
 
 ### 为什么安装包很大
 
-词典包含约 340 万条索引和离线正文。解压后的 `.dictionary` 大约 416 MB，属于正常体积。
+词典包含约 340 万条源记录及离线正文。v1.2.1 解压后的 `.dictionary` 约 424 MiB，属于正常体积。
 
 ## 从源码构建
 
@@ -261,6 +284,8 @@ Apple 已不再面向普通用户维护 Dictionary Development Kit，因此不�
 ```text
 dictionary-source/       样式、XSL、偏好设置、Info.plist 和 Makefile
 scripts/                 MDX 到 Apple Dictionary XML 的转换脚本
+semantic_cleanup/        AI 语义重构的数据契约、规则、批处理与校验层
+docs/semantic-architecture.md  语义重构架构、质量门槛与性能策略
 requirements.txt         已锁定的 Python 构建依赖
 LICENSE                  ECDICT 1.0.28 的 MIT License
 NOTICE                   数据来源和非官方声明

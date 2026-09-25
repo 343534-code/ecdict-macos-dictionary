@@ -1,0 +1,359 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ECDICT semantic candidate v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "word",
+    "pronunciation",
+    "senses",
+    "morphology",
+    "exam_tags",
+    "frequency",
+    "provenance"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "2.0"
+    },
+    "word": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240,
+      "pattern": "\\S"
+    },
+    "pronunciation": {
+      "type": "array",
+      "maxItems": 4,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "ipa",
+          "region"
+        ],
+        "properties": {
+          "ipa": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 240,
+            "pattern": "\\S"
+          },
+          "region": {
+            "enum": [
+              "UK",
+              "US",
+              "unspecified"
+            ]
+          }
+        }
+      }
+    },
+    "senses": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 64,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "sense_id",
+          "pos",
+          "sense_number",
+          "english_definition",
+          "chinese_definition",
+          "domain",
+          "learning_priority",
+          "confidence",
+          "source_entry_ids",
+          "examples",
+          "usage_notes"
+        ],
+        "properties": {
+          "sense_id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]{0,63}$"
+          },
+          "pos": {
+            "enum": [
+              "n.",
+              "v.",
+              "vt.",
+              "vi.",
+              "adj.",
+              "adv.",
+              "prep.",
+              "conj.",
+              "pron.",
+              "aux.",
+              "num.",
+              "interj.",
+              "art.",
+              "abbr.",
+              "det.",
+              "modal.",
+              "phr.",
+              "prefix.",
+              "suffix."
+            ]
+          },
+          "sense_number": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 64
+          },
+          "english_definition": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 180,
+            "pattern": "\\S"
+          },
+          "chinese_definition": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 72,
+            "pattern": "\\S"
+          },
+          "domain": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "maxLength": 40
+          },
+          "learning_priority": {
+            "enum": [
+              "most_common",
+              "exam_common",
+              "specialist",
+              "unknown"
+            ]
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "source_entry_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}:[1-9][0-9]*$"
+            }
+          },
+          "examples": {
+            "type": "array",
+            "maxItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "english",
+                "chinese",
+                "origin"
+              ],
+              "properties": {
+                "english": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 240,
+                  "pattern": "\\S"
+                },
+                "chinese": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 240,
+                  "pattern": "\\S"
+                },
+                "origin": {
+                  "enum": [
+                    "ai_original",
+                    "human_original"
+                  ]
+                }
+              }
+            }
+          },
+          "usage_notes": {
+            "type": "array",
+            "maxItems": 2,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240,
+              "pattern": "\\S"
+            }
+          }
+        }
+      }
+    },
+    "morphology": {
+      "type": "array",
+      "maxItems": 32,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "label",
+          "form"
+        ],
+        "properties": {
+          "label": {
+            "enum": [
+              "过去式",
+              "过去分词",
+              "现在分词",
+              "三单",
+              "复数",
+              "比较级",
+              "最高级",
+              "词形"
+            ]
+          },
+          "form": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 240,
+            "pattern": "\\S"
+          }
+        }
+      }
+    },
+    "exam_tags": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "中考",
+          "高考",
+          "考研",
+          "CET4",
+          "CET6",
+          "TOEFL",
+          "IELTS",
+          "GRE"
+        ]
+      }
+    },
+    "frequency": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bnc",
+        "coca",
+        "frq",
+        "collins",
+        "oxford_3000"
+      ],
+      "properties": {
+        "bnc": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "coca": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "frq": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "collins": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 5
+        },
+        "oxford_3000": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "source_sha256",
+        "raw_entry_ids",
+        "ecdict_version",
+        "generator",
+        "generator_version",
+        "prompt_version",
+        "generated_at"
+      ],
+      "properties": {
+        "source": {
+          "enum": [
+            "ai_candidate",
+            "human_candidate",
+            "design_example"
+          ]
+        },
+        "source_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "raw_entry_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}:[1-9][0-9]*$"
+          }
+        },
+        "ecdict_version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240,
+          "pattern": "\\S"
+        },
+        "generator": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240,
+          "pattern": "\\S"
+        },
+        "generator_version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240,
+          "pattern": "\\S"
+        },
+        "prompt_version": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "generated_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}

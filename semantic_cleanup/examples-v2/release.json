@@ -1,0 +1,99 @@
+{
+  "schema_version": "2.0",
+  "word": "release",
+  "pronunciation": [
+    {
+      "ipa": "/rɪˈliːs/",
+      "region": "unspecified"
+    }
+  ],
+  "senses": [
+    {
+      "sense_id": "noun-freedom",
+      "pos": "n.",
+      "sense_number": 1,
+      "english_definition": "the act of allowing someone or something to go free",
+      "chinese_definition": "释放；解放",
+      "domain": null,
+      "learning_priority": "most_common",
+      "confidence": 0.85,
+      "source_entry_ids": [
+        "0000000000000000000000000000000000000000000000000000000000000000:1"
+      ],
+      "examples": [],
+      "usage_notes": []
+    },
+    {
+      "sense_id": "noun-publication",
+      "pos": "n.",
+      "sense_number": 2,
+      "english_definition": "the act of making something available to the public",
+      "chinese_definition": "发布；发行",
+      "domain": null,
+      "learning_priority": "most_common",
+      "confidence": 0.85,
+      "source_entry_ids": [
+        "0000000000000000000000000000000000000000000000000000000000000000:1"
+      ],
+      "examples": [],
+      "usage_notes": []
+    },
+    {
+      "sense_id": "verb-free",
+      "pos": "vt.",
+      "sense_number": 1,
+      "english_definition": "to allow someone or something to go free",
+      "chinese_definition": "释放；放走",
+      "domain": null,
+      "learning_priority": "most_common",
+      "confidence": 0.85,
+      "source_entry_ids": [
+        "0000000000000000000000000000000000000000000000000000000000000000:1"
+      ],
+      "examples": [],
+      "usage_notes": []
+    },
+    {
+      "sense_id": "verb-publish",
+      "pos": "vt.",
+      "sense_number": 2,
+      "english_definition": "to make something available to the public",
+      "chinese_definition": "发布；发行；推出",
+      "domain": null,
+      "learning_priority": "most_common",
+      "confidence": 0.85,
+      "source_entry_ids": [
+        "0000000000000000000000000000000000000000000000000000000000000000:1"
+      ],
+      "examples": [
+        {
+          "english": "The team released a new app today.",
+          "chinese": "团队今天发布了一款新应用。",
+          "origin": "ai_original"
+        }
+      ],
+      "usage_notes": []
+    }
+  ],
+  "morphology": [],
+  "exam_tags": [],
+  "frequency": {
+    "bnc": null,
+    "coca": null,
+    "frq": null,
+    "collins": null,
+    "oxford_3000": null
+  },
+  "provenance": {
+    "source": "design_example",
+    "source_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "raw_entry_ids": [
+      "0000000000000000000000000000000000000000000000000000000000000000:1"
+    ],
+    "ecdict_version": "illustrative-not-source-verified",
+    "generator": "phase2-design-fixture",
+    "generator_version": "1",
+    "prompt_version": null,
+    "generated_at": "2026-09-12T00:00:00Z"
+  }
+}

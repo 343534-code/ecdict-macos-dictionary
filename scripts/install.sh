@@ -5,6 +5,7 @@ set -euo pipefail
 REPOSITORY="343534-code/ecdict-macos-dictionary"
 DICTIONARY_NAME="ECDICT 简明英汉字典.dictionary"
 INSTALL_DIR="${ECDICT_INSTALL_DIR:-$HOME/Library/Dictionaries}"
+SYSTEM_DICTIONARY="/Library/Dictionaries/$DICTIONARY_NAME"
 API_URL="${ECDICT_RELEASE_API_URL:-https://api.github.com/repos/$REPOSITORY/releases/latest}"
 
 work_dir=""
@@ -26,6 +27,9 @@ command -v shasum >/dev/null 2>&1 || fail "系统中找不到 shasum。"
 
 [[ "$(uname -s)" == "Darwin" ]] || fail "此安装脚本仅支持 macOS。"
 [[ -n "$INSTALL_DIR" && "$INSTALL_DIR" != "/" ]] || fail "安装目录不安全。"
+if [[ "$INSTALL_DIR" != "/Library/Dictionaries" && -d "$SYSTEM_DICTIONARY" ]]; then
+    fail "检测到系统级旧版 $SYSTEM_DICTIONARY。macOS 可能优先加载它；请改用最新 Release 中的 PKG 覆盖更新。"
+fi
 
 work_dir="$(/usr/bin/mktemp -d "${TMPDIR:-/tmp}/ecdict-install.XXXXXX")"
 trap cleanup EXIT INT TERM
@@ -85,6 +89,8 @@ fi
     || fail "无法复制词典到 $INSTALL_DIR。"
 /usr/bin/touch "$INSTALL_DIR"
 if [[ "${ECDICT_SKIP_RESTART:-0}" != "1" ]]; then
+    /usr/bin/killall -9 LookupViewService >/dev/null 2>&1 || true
+    /usr/bin/killall -9 com.apple.DictionaryServiceHelper >/dev/null 2>&1 || true
     /usr/bin/killall Dictionary >/dev/null 2>&1 || true
 fi
 
