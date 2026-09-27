@@ -1,16 +1,22 @@
 # ECDICT macOS Dictionary
 
+**简体中文** | [English](README.en.md)
+
 [![Release](https://img.shields.io/github/v/release/343534-code/ecdict-macos-dictionary?label=release)](https://github.com/343534-code/ecdict-macos-dictionary/releases/latest)
 [![Platform](https://img.shields.io/badge/platform-macOS-black)](#系统要求)
 [![License](https://img.shields.io/github/license/343534-code/ecdict-macos-dictionary)](LICENSE)
 
-**把约 340 万条 ECDICT 英汉词条带入 macOS 原生查词体验。**
+**在 Mac 上随手查词：约 340 万条 ECDICT 英汉词条，离线可用，融入系统查询。**
+
+为阅读英文资料、写作、编程和英语学习提供随手可用的中文释义。安装到 Apple 自带的“词典”后，即可在 Dictionary.app 或支持系统“查询”的应用中查词，无需为每次查询打开浏览器。
+
+*An offline English–Chinese dictionary for macOS, with around 3.4 million ECDICT entries in Dictionary.app and system Look Up. [Read the English guide →](README.en.md)*
 
 ![三指查询 Demo：精简首屏，点击更多展开完整详情（界面示意动画，非系统录屏）](docs/images/lookup-demo-v121.gif)
 
 > **界面示意动画，非系统录屏。** 演示 v1.2.1 的“首屏看释义 → 点击更多看详情”。具体高度、字号与展开方式由 macOS 和查询应用决定。[查看最新查询页面](docs/lookup-preview.md)。
 
-这是一款为 Apple 自带“词典”应用制作的大规模离线英汉词典。安装后无需打开浏览器，即可在 Dictionary.app、右键“查询”和触控板三指轻点中查看音标、词性与中文释义。数据保存在本机，不需联网、账号或常驻进程。
+安装完成后，查词无需联网、注册账号或运行额外的常驻程序。右键“查询”和触控板三指轻点的可用性取决于应用、设备与系统设置。
 
 [下载最新版](https://github.com/343534-code/ecdict-macos-dictionary/releases/latest) · [安装指南](#macos-安装流程) · [常见问题](#常见问题) · [从源码构建](#从源码构建)
 
@@ -40,13 +46,15 @@ curl -fsSL https://github.com/343534-code/ecdict-macos-dictionary/releases/lates
 
 ## 产品介绍
 
-ECDICT macOS Dictionary 基于 [skywind3000/ECDICT](https://github.com/skywind3000/ECDICT) 1.0.28 数据制作，将上游 MDX 转换为 Apple `Dictionary.app` 可直接读取的 `.dictionary` 格式。它适合在阅读、写作、编程和学习时追求快速、安静且无广告查词体验的用户。
+ECDICT macOS Dictionary 将 [skywind3000/ECDICT](https://github.com/skywind3000/ECDICT) 1.0.28 的英汉数据转换为 Apple `Dictionary.app` 可读取的 `.dictionary` 格式，并针对完整词典页面与快速查询浮窗优化排版。
+
+快速查询先展示各词性的第一条原始释义，便于阅读时迅速把握词义；展开“更多”可继续查看剩余释义及源数据中已有的词形、考试标签与词频信息。约 340 万条记录涵盖单词、变形、短语和专有名词，并不等同于 340 万个独立常用单词；不同词条包含的字段也有所不同。
 
 | 项目 | 说明 |
 | --- | --- |
 | 词典数据 | ECDICT 1.0.28，约 340 万条词条 |
 | 查询方式 | Dictionary.app、三指轻点、右键“查询”及部分系统文本服务 |
-| 词条内容 | 词头、音标、词性、中文释义、可点击词形变化、考试标签与 BNC/COCA 词频 |
+| 词条内容 | 词头、音标、词性、中文释义，以及源数据中已有的可点击词形变化、考试标签与 BNC/COCA 词频 |
 | 运行方式 | 完全离线，无账号、无广告、无常驻进程 |
 | 其他格式 | 同时提供 MDX，可导入欧路词典、GoldenDict 和 MDict 等软件 |
 
@@ -72,14 +80,12 @@ ECDICT macOS Dictionary 基于 [skywind3000/ECDICT](https://github.com/skywind30
 
 ### 主要特点
 
-- 收录单词、变形、短语、专有名词和大量扩展词目；
-- 词头、音标和 Oxford/Collins 评级同行排版，减少三指查询中的纵向占用；
-- Oxford/Collins 保留轻量评级徽章，考试大纲与 BNC/COCA 词频以次要文本展示；
-- 词性使用固定宽度，多行释义严格对齐；
-- 动词的过去式、过去分词、现在分词和第三人称单数使用带名称的词形标签排版；
-- 采用适配 macOS 深色外观和快速查询面板的结构化样式；
-- 词典数据完全保存在本机，不收集使用数据；
-- 提供转换脚本和构建配置，便于审查、修改和复现。
+- **融入阅读流程**：在 Dictionary.app 中浏览完整词条，或在支持的应用里通过右键、三指轻点调用系统查询。
+- **先看释义，再看细节**：快速查询首屏保持精简，展开后查看其余内容；完整页面按词性组织释义。
+- **学习信息集中呈现**：保留源数据中的音标、Oxford/Collins 标记、具名词形变化、考试标签和 BNC/COCA 词频，减少来回查找。
+- **离线使用，无额外负担**：数据保存在本机，无账号、无广告，不收集使用数据，也不需要额外的常驻进程。
+- **兼顾不同阅读场景**：提供深色外观样式及 MDX 下载；系统查询浮窗的最终样式由 macOS 决定。
+- **来源与构建可审查**：公开转换脚本、样式和构建配置，保留上游数据来源与许可证说明。
 
 ### 徽章怎么看
 
@@ -207,7 +213,7 @@ killall Dictionary 2>/dev/null || true
 
 1. 打开“词典”→“设置…”，取消勾选本词典。
 2. 退出“词典”。
-3. 在访达中前往 `~/Library/Dictionaries/`。
+3. 在访达中前往安装位置：ZIP/一行命令通常为 `~/Library/Dictionaries/`，PKG 为 `/Library/Dictionaries/`（移除系统级副本可能需要管理员密码）。
 4. 将对应 `.dictionary` 文件夹移到废纸篓。
 5. 重新打开“词典”。
 
