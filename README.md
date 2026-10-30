@@ -20,6 +20,9 @@
 
 [下载最新版](https://github.com/343534-code/ecdict-macos-dictionary/releases/latest) · [安装指南](#macos-安装流程) · [常见问题](#常见问题) · [从源码构建](#从源码构建)
 
+> [!TIP]
+> 🔊 想要真人发音？可以试试 [ECDICT 英汉发音词典](https://github.com/thisIsZs/ecdict-audio-dictionary)（由 [@thisIsZs](https://github.com/thisIsZs) 维护）。它在本项目的基础上加入了真人录音、一词多音和查词弹窗发音。
+
 > [!NOTE]
 > 项目正在建设面向英语学习者的语义重构层：它会在不改写 ECDICT 原始数据的前提下，为经过审核的高价值词条提供按英文语义重新组织的释义、简短英文解释和至多一条例句。当前 Release 仍以稳定的原始数据渲染为主；详见[语义重构架构](docs/semantic-architecture.md)。
 

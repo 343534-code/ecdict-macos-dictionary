@@ -12,6 +12,9 @@ Look up English words while reading, writing, coding, or studying. ECDICT macOS 
 
 [Download latest release](https://github.com/343534-code/ecdict-macos-dictionary/releases/latest) · [Installation](#installation) · [FAQ](#faq) · [Build from source](#build-from-source)
 
+> [!TIP]
+> 🔊 Want real human pronunciations? Check out [ECDICT 英汉发音词典](https://github.com/thisIsZs/ecdict-audio-dictionary) by [@thisIsZs](https://github.com/thisIsZs). It builds on this project and adds recorded audio, separate noun/verb pronunciations, and playback in the Look Up popup.
+
 ![Illustrated Look Up demo: compact definitions first, expanded details afterward; not a macOS screen recording](docs/images/lookup-demo-v121.gif)
 
 > **Illustrated interface animation, not a screen recording.** This demonstrates the compact and expanded views in v1.2.1. Panel height, typography, and expansion behavior depend on macOS and the app used for lookup. See the [current layout preview](docs/lookup-preview.md) (Chinese).
