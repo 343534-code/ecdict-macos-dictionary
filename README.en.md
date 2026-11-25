@@ -2,6 +2,7 @@
 
 [简体中文](README.md) | **English**
 
+[![CI](https://github.com/343534-code/ecdict-macos-dictionary/actions/workflows/ci.yml/badge.svg)](https://github.com/343534-code/ecdict-macos-dictionary/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/343534-code/ecdict-macos-dictionary?label=release)](https://github.com/343534-code/ecdict-macos-dictionary/releases/latest)
 [![Platform](https://img.shields.io/badge/platform-macOS-black)](#requirements)
 [![License](https://img.shields.io/github/license/343534-code/ecdict-macos-dictionary)](LICENSE)
@@ -199,17 +200,42 @@ make all
 
 Output is written to `dictionary-source/objects/`. A full build takes time and several GB of temporary disk space. The Apple development tools are not included; build compatibility depends on your macOS and kit versions.
 
+## Running tests locally
+
+Running the test suite does not require LZO or Apple's Dictionary Development Kit. Install `requirements-semantic.txt` and run `unittest`:
+
+```bash
+python3 -m pip install -r requirements-semantic.txt
+python3 -m unittest discover -s tests -v
+```
+
+To run the full set of checks executed by GitHub Actions CI:
+
+```bash
+python3 -m compileall -q scripts semantic_cleanup tests
+python3 -c "import plistlib, xml.etree.ElementTree as ET; ET.parse('dictionary-source/MyInfo.plist'); assert plistlib.load(open('dictionary-source/MyInfo.plist', 'rb')).get('CFBundleShortVersionString')"
+bash -n scripts/install.sh scripts/build_pkg.sh packaging/scripts/postinstall
+shellcheck scripts/install.sh scripts/build_pkg.sh packaging/scripts/postinstall
+```
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) (Chinese) for contribution guidelines.
+
 ## Repository layout
 
 ```text
+.github/                      GitHub Actions CI workflow and issue templates
 README.md                     Chinese introduction and guide
 README.en.md                  English introduction and guide
+CHANGELOG.md                  Summary of changes across releases
+CONTRIBUTING.md               Contribution and local verification guide
 dictionary-source/            Styles, XSL, preferences, Info.plist, and Makefile
-scripts/                      Conversion, installation, and supporting scripts
+packaging/                    PKG installer scripts (postinstall)
+scripts/                      Conversion, installation, and PKG build scripts
 semantic_cleanup/             Semantic restructuring contracts and validation
-docs/                         Layout previews and architecture documentation
-tests/                        Automated checks
+docs/                         Layout previews, architecture docs, and release notes (docs/releases/)
+tests/                        Automated unit and schema tests
 requirements.txt              Pinned Python build dependencies
+requirements-semantic.txt     Python dependencies for tests and semantic validation
 LICENSE                       MIT license text retained from ECDICT 1.0.28
 NOTICE                        Data attribution and unofficial-project notice
 ```

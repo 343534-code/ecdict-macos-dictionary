@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 常见问题 / FAQ
+    url: https://github.com/343534-code/ecdict-macos-dictionary#常见问题
+    about: 安装、启用系统自带词典、三指查询等常见问题的排查说明
+  - name: 下载最新版本 / Latest Releases
+    url: https://github.com/343534-code/ecdict-macos-dictionary/releases/latest
+    about: 获取最新的 ZIP、PKG、MDX 与 SHA256SUMS.txt

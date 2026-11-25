@@ -1,0 +1,75 @@
+name: Bug 报告 / Bug Report
+description: 反馈安装、查询、排版或脚本中的问题 / Report an installation, lookup, layout, or script issue
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢反馈！提交前建议先查看 [README 常见问题](https://github.com/343534-code/ecdict-macos-dictionary#常见问题)（[English FAQ](https://github.com/343534-code/ecdict-macos-dictionary/blob/main/README.en.md#faq)）。
+
+  - type: input
+    id: macos_version
+    attributes:
+      label: macOS 版本 / macOS Version
+      placeholder: 例如：macOS 15.3 (Apple Silicon)
+    validations:
+      required: true
+
+  - type: input
+    id: dictionary_version
+    attributes:
+      label: 词典版本 / Dictionary Version
+      placeholder: 例如：v1.2.1
+    validations:
+      required: true
+
+  - type: dropdown
+    id: install_method
+    attributes:
+      label: 安装方式 / Installation Method
+      options:
+        - 一行命令安装 (install.sh)
+        - ZIP 手动安装 (~/Library/Dictionaries/)
+        - PKG 图形化安装 (/Library/Dictionaries/)
+        - 从源码构建 (Build from source)
+        - MDX (欧路词典 / GoldenDict / MDict 等)
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: 排查确认 / Checklist
+      options:
+        - label: 已在“词典”→“设置…”中勾选“ECDICT 简明英汉字典”，并同时勾选了至少一个 macOS 系统自带词典
+          required: false
+        - label: 已完全退出（Command-Q）并重新打开“词典”应用
+          required: false
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 问题描述与复现步骤 / Description & Steps to Reproduce
+      description: 请描述遇到的问题、查询的词条以及复现步骤。
+      placeholder: |
+        1. 查询单词 ...
+        2. 实际显示 ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望结果 / Expected Behavior
+      placeholder: 期望看到的正常表现
+    validations:
+      required: false
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: 截图或终端输出 / Screenshots or Logs
+      description: 如方便请粘贴截图、错误输出或相关日志。
+    validations:
+      required: false
