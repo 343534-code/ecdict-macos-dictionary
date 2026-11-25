@@ -6,7 +6,33 @@ export COPYFILE_DISABLE=1
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 REPOSITORY_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 DICTIONARY_NAME="ECDICT 简明英汉字典.dictionary"
-VERSION="${VERSION:-1.2.1}"
+INFO_PLIST="$REPOSITORY_ROOT/dictionary-source/MyInfo.plist"
+
+read_plist_version() {
+    local plist_path="$1"
+    [[ -f "$plist_path" ]] || {
+        printf '找不到 Info.plist：%s\n' "$plist_path" >&2
+        exit 1
+    }
+    if [[ -x /usr/libexec/PlistBuddy ]]; then
+        /usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$plist_path"
+    elif command -v python3 >/dev/null 2>&1; then
+        python3 -c 'import plistlib, sys; print(plistlib.load(open(sys.argv[1], "rb"))["CFBundleShortVersionString"])' "$plist_path"
+    else
+        printf '无法从 %s 读取 CFBundleShortVersionString（缺少 PlistBuddy 和 python3）。\n' "$plist_path" >&2
+        exit 1
+    fi
+}
+
+if [[ -z "${VERSION:-}" ]]; then
+    VERSION="$(read_plist_version "$INFO_PLIST")"
+fi
+
+[[ -n "$VERSION" ]] || {
+    printf '无法确定版本号，请检查 %s 或设置 VERSION 环境变量。\n' "$INFO_PLIST" >&2
+    exit 1
+}
+
 BUNDLE_PATH="${1:-$REPOSITORY_ROOT/dictionary-source/objects/$DICTIONARY_NAME}"
 OUTPUT_PATH="${2:-$REPOSITORY_ROOT/dist/ECDICT-macOS-Dictionary-v$VERSION.pkg}"
 PACKAGE_IDENTIFIER="com.ecdict.dictionary.installer"

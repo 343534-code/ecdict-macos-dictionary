@@ -2,6 +2,7 @@
 
 **简体中文** | [English](README.en.md)
 
+[![CI](https://github.com/343534-code/ecdict-macos-dictionary/actions/workflows/ci.yml/badge.svg)](https://github.com/343534-code/ecdict-macos-dictionary/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/343534-code/ecdict-macos-dictionary?label=release)](https://github.com/343534-code/ecdict-macos-dictionary/releases/latest)
 [![Platform](https://img.shields.io/badge/platform-macOS-black)](#系统要求)
 [![License](https://img.shields.io/github/license/343534-code/ecdict-macos-dictionary)](LICENSE)
@@ -288,14 +289,40 @@ make all
 
 Apple 已不再面向普通用户维护 Dictionary Development Kit，因此不同 macOS 版本的构建兼容性可能有所差异。Apple 开发工具本身不包含在本仓库中。
 
+## 本地运行测试
+
+运行单元测试与校验无需 LZO 或 Apple Dictionary Development Kit，只需安装 `requirements-semantic.txt`：
+
+```bash
+python3 -m pip install -r requirements-semantic.txt
+python3 -m unittest discover -s tests -v
+```
+
+如需运行与 GitHub Actions CI 一致的完整静态检查：
+
+```bash
+python3 -m compileall -q scripts semantic_cleanup tests
+python3 -c "import plistlib, xml.etree.ElementTree as ET; ET.parse('dictionary-source/MyInfo.plist'); assert plistlib.load(open('dictionary-source/MyInfo.plist', 'rb')).get('CFBundleShortVersionString')"
+bash -n scripts/install.sh scripts/build_pkg.sh packaging/scripts/postinstall
+shellcheck scripts/install.sh scripts/build_pkg.sh packaging/scripts/postinstall
+```
+
+更多开发与提交规范见 [CONTRIBUTING.md](CONTRIBUTING.md)。
+
 ## 项目结构
 
 ```text
+.github/                 GitHub Actions CI 工作流与 Issue 模板
 dictionary-source/       样式、XSL、偏好设置、Info.plist 和 Makefile
-scripts/                 MDX 到 Apple Dictionary XML 的转换脚本
+packaging/               PKG 安装包脚本（postinstall）
+scripts/                 MDX 转换、一键安装与 PKG 打包脚本
 semantic_cleanup/        AI 语义重构的数据契约、规则、批处理与校验层
-docs/semantic-architecture.md  语义重构架构、质量门槛与性能策略
+tests/                   单元测试与 schema 校验测试
+docs/                    查询预览、架构文档与各版本发布说明（docs/releases/）
+CHANGELOG.md             各版本变更汇总
+CONTRIBUTING.md          贡献与本地检查指南
 requirements.txt         已锁定的 Python 构建依赖
+requirements-semantic.txt  测试与语义校验所需的 Python 依赖
 LICENSE                  ECDICT 1.0.28 的 MIT License
 NOTICE                   数据来源和非官方声明
 ```
